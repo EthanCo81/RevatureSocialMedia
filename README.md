@@ -1,8 +1,19 @@
 # Revature Social Media
 
-- [ ] Item 1
-- [ ] Item 2
-- [x] Item 3
+## Tasks
+- [x] GitHub setup                 @EthanCo81
+- [ ] Homepage                     larry
+- [ ] Login                        @EthanCo81
+- [ ] Edit Profile                 @goeteeks
+- [ ] View Profile                 @goeteeks
+- [ ] Search Feature               @turnerbb
+- [ ] Forum Posting
+- [ ] Helpfulness Rating
+- [ ] Learning Aide FlashCards
+- [ ] Private Messaging
+- [ ] Forum Answer
+- [ ] Question Deleeting
+
 
 
 A link to the readme [style guide](https://help.github.com/articles/basic-writing-and-formatting-syntax/).
@@ -31,7 +42,3 @@ Project 2 Tools:
 - GitHub
 - SonarQube
 
-Team:
-@EthanCo81
-@turnerbb
-@
