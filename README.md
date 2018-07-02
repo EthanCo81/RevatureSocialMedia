@@ -16,12 +16,9 @@
 
 
 
-A link to the readme [style guide](https://help.github.com/articles/basic-writing-and-formatting-syntax/).
+## Technologies to incorporate:
 
-
-Technologies to incorporate:
-
-Project 2 Stack:
+### Project 2 Stack:
 - Spring MVC
 - Spring AOP
 - Hibernate
@@ -34,11 +31,14 @@ Project 2 Stack:
 - Oracle SQL
 - jUnit
 
-Project 2 Tools:
+### Project 2 Tools:
 - AWS RDS
 - AWS EC2
 - Tomcat
 - Jenkins
 - GitHub
 - SonarQube
+
+
+[style guide](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 
