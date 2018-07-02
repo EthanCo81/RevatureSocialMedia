@@ -1,12 +1,12 @@
 # Revature Social Media
 
 ## Tasks
-- [x] GitHub setup                 @EthanCo81
-- [ ] Homepage                     larry
-- [ ] Login                        @EthanCo81
-- [ ] Edit Profile                 @goeteeks
-- [ ] View Profile                 @goeteeks
-- [ ] Search Feature               @turnerbb
+- [x] GitHub setup
+- [ ] Homepage
+- [ ] Login
+- [ ] Edit Profile
+- [ ] View Profile
+- [ ] Search Feature
 - [ ] Forum Posting
 - [ ] Helpfulness Rating
 - [ ] Learning Aide FlashCards
