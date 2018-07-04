@@ -1,0 +1,78 @@
+Hello. This is your profile
+<div class="container border" *ngIf="employee">
+  <div class="row">
+    <div class="col-sm border card">
+      <h4 class="border border-dark mx-auto">{{employee.firstname}}</h4>
+      
+    </div>
+    <div class="col-sm">
+      <div class="row">
+        <div class="col">
+          <h5>Username:</h5>
+        </div>
+        <div class="col">
+          <p>{{employee.username}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h5>First Name:</h5>
+        </div>
+        <div class="col">
+          <p>{{employee.firstname}}</p>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="container border" *ngIf="instructor">
+  <div class="row">
+    <div class="col-sm border card">
+      <h4 class="border border-dark mx-auto">{{instructor.firstname}}</h4>
+      
+    </div>
+    <div class="col-sm">
+      <div class="row">
+        <div class="col">
+          <h5>Username:</h5>
+        </div>
+        <div class="col">
+          <p>{{instructor.username}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h5>First Name:</h5>
+        </div>
+        <div class="col">
+          <p>{{instructor.firstname}}</p>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="container border" *ngIf="client">
+  <div class="row">
+    <div class="col-sm border card">
+      <h4 class="border border-dark mx-auto">{{client.firstname}}</h4>
+      
+    </div>
+    <div class="col-sm">
+      <div class="row">
+        <div class="col">
+          <h5>Username:</h5>
+        </div>
+        <div class="col">
+          <p>{{client.username}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h5>First Name:</h5>
+        </div>
+        <div class="col">
+          <p>{{client.firstname}}</p>
+        </div>
+      </div>
+  </div>
+</div>
