@@ -41,6 +41,7 @@ public class EmployeeManager implements EmployeeDAO{
 		} finally {
 			session.close();
 		}
+		return null;
 
 	}
 
