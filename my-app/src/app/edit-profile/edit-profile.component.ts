@@ -3,32 +3,33 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
 //import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { EmployeeService } from 'src/app/employee.service';
+import { ProfileService } from 'src/app/profile.service';
 
+import { Profile } from 'src/app/profile';
 import { Employee } from 'src/app/employee';
 
 @Component({
-  selector: 'app-edit-employee',
-  templateUrl: './edit-employee.component.html',
-  styleUrls: ['./edit-employee.component.css']
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.component.html',
+  styleUrls: ['./edit-profile.component.css']
 })
-export class EditEmployeeComponent implements OnInit {
+export class EditProfileComponent implements OnInit {
   public employee: Employee;
 
   constructor(
-    private employeeService: EmployeeService,
+    private profileService: ProfileService,
     private route: ActivatedRoute,
     private router: Router,
     private location: Location) { }
 
   ngOnInit(): void {
     //TODO replace username with id
-    console.log("Hello from edit-book's oninit()")
+    console.log("Hello from edit-profile's oninit()")
     const username = this.route.snapshot.paramMap.get('username');
     console.log(username);
 
     if (username) {
-      this.employeeService.getEmp(username).subscribe(
+      this.profileService.getEmp(username).subscribe(
         emp => {
           // set current book to the book retrieved.
           this.employee = emp;
@@ -39,10 +40,10 @@ export class EditEmployeeComponent implements OnInit {
   }
 
   submit(): void {
-    this.employeeService.updateEmp(this.employee).subscribe(
+    this.profileService.updateEmp(this.employee).subscribe(
       emp => {
         this.employee = emp;
-        this.router.navigate(['/employee']);
+        this.router.navigate(['/profile']);
       }
     );
     console.log(this.employee);

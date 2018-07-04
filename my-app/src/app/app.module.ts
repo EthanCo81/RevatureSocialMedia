@@ -3,15 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { EmployeeComponent } from './employee/employee.component';
-import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { ProfileComponent } from './profile/profile.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    EmployeeComponent,
-    EditEmployeeComponent
+    ProfileComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule
