@@ -3,6 +3,7 @@ package com.revaturesocialmedia.daos;
 import java.util.List;
 
 import com.revaturesocialmedia.beans.Client;
+import com.revaturesocialmedia.beans.User;
 
 public interface ClientDAO {
 
@@ -15,6 +16,7 @@ public interface ClientDAO {
 	List<Client> getAllCriteria();
 	Client getById(int i);
 	Client loadById(int i);
+	Client login(String username, String password);
 	
 	//UPDATE
 	Client update(Client c);
@@ -23,5 +25,6 @@ public interface ClientDAO {
 	
 	//DELETE
 	void delete(Client c);
+	
 
 }

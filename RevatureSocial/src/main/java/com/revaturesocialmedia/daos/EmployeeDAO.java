@@ -3,6 +3,7 @@ package com.revaturesocialmedia.daos;
 import java.util.List;
 
 import com.revaturesocialmedia.beans.Employee;
+import com.revaturesocialmedia.beans.User;
 
 public interface EmployeeDAO {
 	
@@ -16,6 +17,7 @@ public interface EmployeeDAO {
 		List<Employee> getAllCriteria();
 		Employee getById(int i);
 		Employee loadById(int i);
+		Employee login(String username, String password);
 		
 		//UPDATE
 		Employee update(Employee e);
@@ -24,6 +26,7 @@ public interface EmployeeDAO {
 		
 		//DELETE
 		void delete(Employee e);
+		
 	
 
 }

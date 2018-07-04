@@ -3,6 +3,7 @@ package com.revaturesocialmedia.daos;
 import java.util.List;
 
 import com.revaturesocialmedia.beans.Instructor;
+import com.revaturesocialmedia.beans.User;
 
 public interface InstructorDAO {
 
@@ -15,6 +16,7 @@ public interface InstructorDAO {
 	List<Instructor> getAllCriteria();
 	Instructor getById(int i);
 	Instructor loadById(int i);
+	Instructor login(String username, String password);
 	
 	//UPDATE
 	Instructor update(Instructor in);
@@ -23,5 +25,6 @@ public interface InstructorDAO {
 	
 	//DELETE
 	void delete(Instructor in);
+	
 
 }

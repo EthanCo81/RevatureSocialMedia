@@ -14,9 +14,9 @@ private EmployeeDAO empDaoInst = EmployeeManager.getInst();
 	@Test
 	public void empDaoTest() {
 		Employee emp = new Employee();
-		emp.setFirstname("Gary");
+		emp.setFirstname("Harry");
 		emp.setLastname("Smith");
-		emp.setUsername("gsmith");
+		emp.setUsername("hsmith");
 		emp.setPassword("pass");
 		int pk = empDaoInst.save(emp);
 		assertNotEquals(null, empDaoInst.getById(pk));

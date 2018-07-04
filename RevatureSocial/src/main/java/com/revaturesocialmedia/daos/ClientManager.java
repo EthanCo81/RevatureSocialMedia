@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.revaturesocialmedia.beans.Client;
@@ -13,6 +14,19 @@ import com.revaturesocialmedia.util.HibernateUtil;
 @Component
 public class ClientManager implements ClientDAO {
 	private HibernateUtil hu = HibernateUtil.getInstance();
+	private static ClientManager inst = null;
+	
+	private ClientManager() {
+		
+	}
+	
+	public static ClientManager getInst() {
+		if (inst ==null) {
+			inst = new ClientManager();
+		}
+		return inst;
+	}
+	
 	@Override
 	public int save(Client c) {
 		Session session = hu.getSession();
@@ -122,5 +136,17 @@ public class ClientManager implements ClientDAO {
 		s.close();
 
 		
+	}
+
+	@Override
+	public Client login(String username, String password) {
+        Session s = hu.getSession();
+        String query = "from Client c where c.username=:username and c.password=:password";
+        Query<Client> q = s.createQuery(query, Client.class);
+        q.setParameter("username", username);
+        q.setParameter("password", password);
+        Client c = q.getSingleResult();
+        s.close();
+        return c;
 	}
 }
