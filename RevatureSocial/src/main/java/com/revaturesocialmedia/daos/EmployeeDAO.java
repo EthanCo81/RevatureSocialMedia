@@ -8,7 +8,7 @@ public interface EmployeeDAO {
 	
 
 		//CREATE
-		Employee save(Employee e);
+		int save(Employee e);
 		Employee persist(Employee e);
 		
 		//READ

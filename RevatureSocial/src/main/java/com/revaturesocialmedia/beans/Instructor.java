@@ -9,8 +9,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Employee")
-public class Employee implements User{
+@Table(name="Instructor")
+public class Instructor implements User{
 	@Id
 	@Column(name="id_number")
 	@SequenceGenerator(name="id_seq", sequenceName = "user_id_seq", initialValue = 100001, allocationSize = 899999)
@@ -25,7 +25,7 @@ public class Employee implements User{
 	@Column(name = "lastname")
 	private String lastname;
 	
-	public Employee() {
+	public Instructor() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -69,8 +69,5 @@ public class Employee implements User{
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
-	
 	
 }

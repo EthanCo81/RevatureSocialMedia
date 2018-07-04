@@ -6,30 +6,20 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
-import com.revaturesocialmedia.beans.Employee;
+import com.revaturesocialmedia.beans.Client;
 import com.revaturesocialmedia.util.HibernateUtil;
 
-@Component
-public class EmployeeManager implements EmployeeDAO{
-	private HibernateUtil hu = HibernateUtil.getInstance();
 
-	private static EmployeeManager inst = null;
-	private EmployeeManager() {
-		
-	}
-	
-	public static EmployeeDAO getInst() {
-		if(inst == null) inst = new EmployeeManager();
-		return inst;
-	}
-	
+@Component
+public class ClientManager implements ClientDAO {
+	private HibernateUtil hu = HibernateUtil.getInstance();
 	@Override
-	public int save(Employee emp) {
+	public int save(Client c) {
 		Session session = hu.getSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			int i = (Integer) session.save(emp);
+			int i = (Integer) session.save(c);
 			
 			tx.commit();
 			
@@ -45,18 +35,17 @@ public class EmployeeManager implements EmployeeDAO{
 	}
 
 	@Override
-	public Employee persist(Employee emp) {
+	public Client persist(Client c) {
 		Session session = hu.getSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			session.persist(emp);
-			System.out.println("successful persist");
+			session.persist(c);
+			
 			tx.commit();
 			
-			return emp;
+			return c;
 		} catch(Exception e) {
-			System.out.println("BAd Persist");
 			tx.rollback();
 			e.printStackTrace();
 			return null;
@@ -66,56 +55,56 @@ public class EmployeeManager implements EmployeeDAO{
 	}
 
 	@Override
-	public List<Employee> getAllHQL() {
+	public List<Client> getAllHQL() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Employee> getAllCriteria() {
+	public List<Client> getAllCriteria() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Employee getById(int i) {
+	public Client getById(int i) {
 		Session su = hu.getSession();
-		Employee emp = (Employee) su.get(Employee.class, i);
+		Client c = (Client) su.get(Client.class, i);
 		su.close();
-		return emp;
+		return c;
 
 	}
 
 	@Override
-	public Employee loadById(int i) {
+	public Client loadById(int i) {
 		Session su = hu.getSession();
-		Employee emp = (Employee) su.load(Employee.class, i);
+		Client c = (Client) su.load(Client.class, i);
 		// We have to actually access the data or we just return a proxy.
 		// LazyInitializationException gets thrown if we try to access a PROXY with the session CLOSED
 		su.close();
-		return emp;
+		return c;
 
 	}
 
 	@Override
-	public Employee update(Employee emp) {
+	public Client update(Client c) {
 		Session s = hu.getSession();
 		Transaction tx = s.beginTransaction();
-		s.update(emp);
+		s.update(c);
 		tx.commit();
 		s.close();
-		return emp;
+		return c;
 
 	}
 
 	@Override
-	public Employee merge(Employee emp) {
+	public Client merge(Client c) {
 		Session s = hu.getSession();
 		Transaction tx = s.beginTransaction();
-		emp = (Employee)s.merge(emp);
+		c = (Client)s.merge(c);
 		tx.commit();
 		s.close();
-		return emp;
+		return c;
 	}
 
 	@Override
@@ -125,14 +114,13 @@ public class EmployeeManager implements EmployeeDAO{
 	}
 
 	@Override
-	public void delete(Employee emp) {
+	public void delete(Client c) {
 		Session s = hu.getSession();
 		Transaction tx = s.beginTransaction();
-		s.delete(emp);
+		s.delete(c);
 		tx.commit();
 		s.close();
 
 		
 	}
-
 }
