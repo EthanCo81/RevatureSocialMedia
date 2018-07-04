@@ -21,7 +21,7 @@ public class EmployeeManager implements EmployeeDAO{
 	
 	@Override
 	public Employee save(Employee emp) {
-		/*Session session = hu.getSession();
+		Session session = hu.getSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
@@ -36,7 +36,7 @@ public class EmployeeManager implements EmployeeDAO{
 			return null;
 		} finally {
 			session.close();
-		}*/
+		}
 		return null;
 
 	}
