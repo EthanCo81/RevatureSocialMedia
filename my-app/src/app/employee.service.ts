@@ -23,8 +23,8 @@ export class EmployeeService {
     );
   }
 
-  getEmp(username: string): Observable<Employee> {
-    const url: string = this.appUrl + '/' + username;
+  getEmp(id: number): Observable<Employee> {
+    const url: string = this.appUrl + '/' + id;
     return this.http.get(url, {withCredentials: true }).pipe(
       map(resp => resp as Employee)
     );
@@ -32,13 +32,20 @@ export class EmployeeService {
 
   updateEmp(employee: Employee): Observable<Employee> {
     const body = JSON.stringify(employee);
-    if (employee.username) {
+    if (employee.id) {
       // update a specific employee (put request)
-      const url = this.appUrl + '/' + employee.username;
+      const url = this.appUrl + '/' + employee.id;
       return this.http.put(url, body,
         { headers: this.headers, withCredentials: true }).pipe(
         map(resp => resp as Employee)
       );
     }
   }
+
+  // getEmployee(): Employee {
+  //   return this.employee;
+  // }
+  // isEmployee() {
+  //   return (this.employee !== undefined && this.employee !== null);
+  // }
 }

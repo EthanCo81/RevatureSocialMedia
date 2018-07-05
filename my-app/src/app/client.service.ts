@@ -24,8 +24,8 @@ export class ClientService {
     );
   }
 
-  getClnt(username: string): Observable<Client> {
-    const url: string = this.appUrl + '/' + username;
+  getClnt(id: number): Observable<Client> {
+    const url: string = this.appUrl + '/' + id;
     return this.http.get(url, {withCredentials: true }).pipe(
       map(resp => resp as Client)
     );
@@ -33,13 +33,20 @@ export class ClientService {
 
   updateClnt(client: Client): Observable<Client> {
     const body = JSON.stringify(client);
-    if (client.username) {
+    if (client.id) {
       // update a specific client (put request)
-      const url = this.appUrl + '/' + client.username;
+      const url = this.appUrl + '/' + client.id;
       return this.http.put(url, body,
         { headers: this.headers, withCredentials: true }).pipe(
         map(resp => resp as Client)
       );
     }
   }
+
+  // getClient(): Client {
+  //   return this.client;
+  // }
+  // isClient() {
+  //   return (this.client !== undefined && this.client !== null);
+  // }
 }

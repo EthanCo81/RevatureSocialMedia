@@ -23,8 +23,8 @@ export class InstructorService {
     );
   }
 
-  getIns(username: string): Observable<Instructor> {
-    const url: string = this.appUrl + '/' + username;
+  getIns(id: number): Observable<Instructor> {
+    const url: string = this.appUrl + '/' + id;
     return this.http.get(url, {withCredentials: true }).pipe(
       map(resp => resp as Instructor)
     );
@@ -32,13 +32,20 @@ export class InstructorService {
 
   updateins(instructor: Instructor): Observable<Instructor> {
     const body = JSON.stringify(instructor);
-    if (instructor.username) {
+    if (instructor.id) {
       // update a specific instructor (put request)
-      const url = this.appUrl + '/' + instructor.username;
+      const url = this.appUrl + '/' + instructor.id;
       return this.http.put(url, body,
         { headers: this.headers, withCredentials: true }).pipe(
         map(resp => resp as Instructor)
       );
     }
   }
+
+  // getInstructor(): Instructor {
+  //   return this.instructor;
+  // }
+  // isInstructor() {
+  //   return (this.instructor !== undefined && this.instructor !== null);
+  // }
 }

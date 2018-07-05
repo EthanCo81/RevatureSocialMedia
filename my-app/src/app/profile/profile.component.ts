@@ -49,17 +49,17 @@ export class ProfileComponent implements OnInit {
 
   editEmp(): void {
     // this.router.navigate('/profile/edit/' + this.employee.id);
-    this.router.navigate(['/profile/edit', this.employee.username]);
+    this.router.navigate(['/profile/edit', this.employee.id]);
   }
 
   editIns(): void {
     // this.router.navigate('/profile/edit/' + this.instructor.id);
-    this.router.navigate(['/profile/edit', this.instructor.username]);
+    this.router.navigate(['/profile/edit', this.instructor.id]);
   }
 
   editCln(): void {
     // this.router.navigate('/profile/edit/' + this.client.id);
-    this.router.navigate(['/profile/edit', this.client.username]);
+    this.router.navigate(['/profile/edit', this.client.id]);
   }
 
 }
