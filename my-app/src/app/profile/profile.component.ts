@@ -30,10 +30,10 @@ export class ProfileComponent implements OnInit {
     //TODO: Change to recognize what type of person is logged in (employee, instructor, or client)
     const username = this.route.snapshot.paramMap.get('username');
 
-    if (username) {
+    /*if (username) {
       this.profileService.getEmp(username).subscribe(
           emp => this.employee = emp);
-    }
+    }*/
   }
 
   

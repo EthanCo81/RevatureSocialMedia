@@ -39,7 +39,7 @@ export class EditProfileComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
 
-    if (this.profileService.isEmployee()) {
+    /*if (this.profileService.isEmployee()) {
       this.employeeService.getEmp(id).subscribe(
         emp => {
           // set current employee to the emp retrieved.
@@ -64,10 +64,10 @@ export class EditProfileComponent implements OnInit {
           this.client = cln;
         }
       );
-    }
+    }*/
   }
 
-  submit(): void {
+ /* submit(): void {
     if (this.profileService.isEmployee()) {
       this.employeeService.updateEmp(this.employee).subscribe(
         emp => {
@@ -97,6 +97,6 @@ export class EditProfileComponent implements OnInit {
       );
       console.log(this.client);
     }
-  }
+  }*/
 
 }
