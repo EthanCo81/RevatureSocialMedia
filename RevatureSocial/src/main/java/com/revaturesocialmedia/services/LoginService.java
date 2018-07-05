@@ -1,25 +1,25 @@
 package com.revaturesocialmedia.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.revaturesocialmedia.beans.User;
 import com.revaturesocialmedia.daos.ClientDAO;
-import com.revaturesocialmedia.daos.ClientManager;
 import com.revaturesocialmedia.daos.EmployeeDAO;
-import com.revaturesocialmedia.daos.EmployeeManager;
 import com.revaturesocialmedia.daos.InstructorDAO;
-import com.revaturesocialmedia.daos.InstructorManager;
 
+
+@Service
 public class LoginService {
-	private static final EmployeeDAO empDaoInst = EmployeeManager.getInst();
-	private static final ClientDAO clientDaoInst = ClientManager.getInst();
-	private static final InstructorDAO instructorDaoInst = InstructorManager.getInst();
-	private static LoginService inst =null;
+	@Autowired
+	private EmployeeDAO empDaoInst;
 	
-	private LoginService() {}
+	@Autowired
+	private ClientDAO clientDaoInst;
 	
-	public static LoginService getInst() {
-		if(inst==null) inst = new LoginService();
-		return inst;
-	}
+	@Autowired
+	private InstructorDAO instructorDaoInst;
+
 
 	public User login(String username, String password) {
 		User u = null;

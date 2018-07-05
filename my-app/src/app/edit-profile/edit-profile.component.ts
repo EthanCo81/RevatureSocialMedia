@@ -23,8 +23,8 @@ export class EditProfileComponent implements OnInit {
     private location: Location) { }
 
   ngOnInit(): void {
-    //TODO replace username with id
-    console.log("Hello from edit-profile's oninit()")
+    // TODO replace username with id
+    console.log('Hello from edit-profile\'s oninit()');
     const username = this.route.snapshot.paramMap.get('username');
     console.log(username);
 
@@ -33,7 +33,6 @@ export class EditProfileComponent implements OnInit {
         emp => {
           // set current book to the book retrieved.
           this.employee = emp;
-          
         }
       );
     }
@@ -48,5 +47,4 @@ export class EditProfileComponent implements OnInit {
     );
     console.log(this.employee);
   }
-
 }
