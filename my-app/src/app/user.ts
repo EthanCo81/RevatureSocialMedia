@@ -1,7 +1,8 @@
-import { User } from './user';
-
-export class Employee extends User {
+export class User {
+    id: number;
     username: string;
     password: string;
     firstname: string;
+    lastname: string;
+
 }
