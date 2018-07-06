@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
-//import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ProfileService } from 'src/app/profile.service';
 
@@ -20,9 +20,6 @@ import { ClientService } from 'src/app/client.service';
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
-  public employee: Employee;
-  public instructor: Instructor;
-  public client: Client;
 
   constructor(
     private profileService: ProfileService,
@@ -33,13 +30,23 @@ export class EditProfileComponent implements OnInit {
     private router: Router,
     private location: Location) { }
 
+    public employee: Employee;
+    public instructor: Instructor;
+    public client: Client;
+
   ngOnInit(): void {
-    //TODO replace username with id
+    
     console.log("Hello from edit-profile's oninit()")
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
 
-    /*if (this.profileService.isEmployee()) {
+    
+
+    this.client = this.clientService.getClient();
+    this.employee = this.employeeService.getEmployee();
+    this.instructor = this.instructorService.getInstructor();
+
+    if (this.profileService.isEmployee()) {
       this.employeeService.getEmp(id).subscribe(
         emp => {
           // set current employee to the emp retrieved.
@@ -64,10 +71,10 @@ export class EditProfileComponent implements OnInit {
           this.client = cln;
         }
       );
-    }*/
+    }
   }
 
- /* submit(): void {
+  submit(): void {
     if (this.profileService.isEmployee()) {
       this.employeeService.updateEmp(this.employee).subscribe(
         emp => {
@@ -97,6 +104,6 @@ export class EditProfileComponent implements OnInit {
       );
       console.log(this.client);
     }
-  }*/
+  }
 
 }

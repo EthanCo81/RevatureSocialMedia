@@ -31,15 +31,15 @@ export class ProfileService {
     private clientService: ClientService
   ) { }
 
-  // isEmployee(): boolean {
-  //   return this.employeeService.isEmployee();
-  // }
+  isEmployee(): boolean {
+    return this.employeeService.isEmployee();
+  }
 
-  // isInstructor(): boolean {
-  //   return this.instructorService.isInstructor();
-  // }
+  isInstructor(): boolean {
+    return this.instructorService.isInstructor();
+  }
 
-  // isClient(): boolean {
-  //   return this.clientService.isClient();
-  // }
+  isClient(): boolean {
+    return this.clientService.isClient();
+  }
 }

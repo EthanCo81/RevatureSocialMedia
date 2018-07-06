@@ -16,6 +16,11 @@ export class EmployeeService {
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
+  employee: Employee;
+
+  setEmployee(emp: Employee){
+    this.employee = emp;
+  }
 
   getEmps(): Observable<Employee[]> {
     return this.http.get(this.appUrl, { withCredentials: true }).pipe(
@@ -42,10 +47,10 @@ export class EmployeeService {
     }
   }
 
-  // getEmployee(): Employee {
-  //   return this.employee;
-  // }
-  // isEmployee() {
-  //   return (this.employee !== undefined && this.employee !== null);
-  // }
+  getEmployee(): Employee {
+    return this.employee;
+  }
+  isEmployee() {
+    return (this.employee !== undefined && this.employee !== null);
+  }
 }

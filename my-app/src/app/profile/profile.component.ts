@@ -8,6 +8,10 @@ import { ProfileService } from '../profile.service';
 import { Instructor } from '../instructor';
 import { Client } from 'src/app/client';
 
+import { EmployeeService } from 'src/app/employee.service';
+import { InstructorService } from 'src/app/instructor.service';
+import { ClientService } from 'src/app/client.service';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -17,6 +21,9 @@ export class ProfileComponent implements OnInit {
   @Input() profile: Profile;
   constructor(
     private profileService: ProfileService,
+    private employeeService: EmployeeService,
+    private instructorService: InstructorService,
+    private clientService: ClientService,
     private route: ActivatedRoute,
     private router: Router,
     private location: Location) {
@@ -28,24 +35,26 @@ export class ProfileComponent implements OnInit {
   client: Client;
   ngOnInit() {
     //TODO: Change to recognize what type of person is logged in (employee, instructor, or client)
-    const username = this.route.snapshot.paramMap.get('username');
+    const id = +this.route.snapshot.paramMap.get('id');
 
-    /*if (username) {
-      this.profileService.getEmp(username).subscribe(
+    /*if (id) {
+      this.profileService.getEmp(id).subscribe(
           emp => this.employee = emp);
     }*/
+    this.client = this.clientService.getClient();
+    this.employee = this.employeeService.getEmployee();
+    this.instructor = this.instructorService.getInstructor();
   }
-
   
-  // isClient(): boolean{
-  //   return this.userService.isClient();
-  // }
-  // isInstructor(): boolean {
-  //   return this.userService.isInstructor();
-  // }
-  // isEmployee(): boolean {
-  //   return this.userService.isEmployee();
-  // }
+  isClient(): boolean{
+    return this.clientService.isClient();
+  }
+  isInstructor(): boolean {
+    return this.instructorService.isInstructor();
+  }
+  isEmployee(): boolean {
+    return this.employeeService.isEmployee();
+  }
 
   editEmp(): void {
     // this.router.navigate('/profile/edit/' + this.employee.id);
