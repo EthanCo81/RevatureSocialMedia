@@ -13,6 +13,17 @@ import com.revaturesocialmedia.util.HibernateUtil;
 @Component
 public class InstructorManager implements InstructorDAO {
 	private HibernateUtil hu = HibernateUtil.getInstance();
+	private static InstructorManager inst = null;
+	
+	private InstructorManager () {
+		
+	}
+	
+	public static InstructorManager getInst() {
+		if (inst == null) inst = new InstructorManager();
+		return inst;
+	}
+	
 	@Override
 	public int save(Instructor in) {
 		Session session = hu.getSession();

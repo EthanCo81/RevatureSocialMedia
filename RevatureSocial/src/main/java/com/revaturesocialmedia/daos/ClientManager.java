@@ -13,6 +13,17 @@ import com.revaturesocialmedia.util.HibernateUtil;
 @Component
 public class ClientManager implements ClientDAO {
 	private HibernateUtil hu = HibernateUtil.getInstance();
+	private static ClientManager inst = null;
+	
+	private ClientManager() {
+		
+	}
+	
+	public static ClientManager getInst() {
+		if (inst == null) inst = new ClientManager();
+		return inst;
+	}
+	
 	@Override
 	public int save(Client c) {
 		Session session = hu.getSession();
