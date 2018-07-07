@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="client")
-public class Client {
+public class Client implements User{
 	
 	@Id
 	@Column(name="id_number")

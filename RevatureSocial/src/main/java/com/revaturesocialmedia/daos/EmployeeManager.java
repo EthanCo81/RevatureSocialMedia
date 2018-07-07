@@ -4,22 +4,24 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
+import com.revaturesocialmedia.beans.Client;
 import com.revaturesocialmedia.beans.Employee;
 import com.revaturesocialmedia.util.HibernateUtil;
 
 @Component
 public class EmployeeManager implements EmployeeDAO{
 	private HibernateUtil hu = HibernateUtil.getInstance();
-
 	private static EmployeeManager inst = null;
+	
 	private EmployeeManager() {
 		
 	}
 	
-	public static EmployeeDAO getInst() {
-		if(inst == null) inst = new EmployeeManager();
+	public static EmployeeManager getInst() {
+		if (inst == null) inst = new EmployeeManager();
 		return inst;
 	}
 	
@@ -133,6 +135,18 @@ public class EmployeeManager implements EmployeeDAO{
 		s.close();
 
 		
+	}
+
+	@Override
+	public Employee login(String username, String password) {
+        Session s = hu.getSession();
+        String query = "from Employee e where e.username=:username and e.password=:password";
+        Query<Employee> q = s.createQuery(query, Employee.class);
+        q.setParameter("username", username);
+        q.setParameter("password", password);
+        Employee e = q.uniqueResult();
+        s.close();
+        return e;
 	}
 
 }

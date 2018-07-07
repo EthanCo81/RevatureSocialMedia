@@ -4,10 +4,10 @@
 	<session-factory>
 		<!-- Configure our database -->
 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
-        <property name="hibernate.connection.url">jdbc:oracle:thin:@revaturesocialmedia.cjlnboaq2f2j.us-east-2.rds.amazonaws.com:1521:ORCL</property>
-        <property name="hibernate.connection.username">ethanco81</property>
-        <property name="hibernate.connection.password">Revature2018</property>
-        <property name="hibernate.connection.pool_size">35</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@revaturesocialmedia.cjlnboaq2f2j.us-east-2.rds.amazonaws.com:1521:ORCL</property>
+		<property name="hibernate.connection.username">ethanco81</property>
+		<property name="hibernate.connection.password">Revature2018</property>
+		<property name="hibernate.connection.pool_size">35</property>
 		
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<!-- We can some hibernate specific things -->

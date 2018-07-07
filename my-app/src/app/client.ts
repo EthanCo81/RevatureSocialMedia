@@ -1,7 +1,6 @@
-export class Client {
-    id: number;
-    username: string;
-    password: string;
-    firstname: string;
-    lastname: string;
+
+import { User } from './user';
+
+export class Client extends User {
+
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.revaturesocialmedia.beans.Instructor;
@@ -133,6 +134,17 @@ public class InstructorManager implements InstructorDAO {
 		s.close();
 
 		
+	}
+	@Override
+	public Instructor login(String username, String password) {
+        Session s = hu.getSession();
+        String query = "from Instructor i where i.username=:username and i.password=:password";
+        Query<Instructor> q = s.createQuery(query, Instructor.class);
+        q.setParameter("username", username);
+        q.setParameter("password", password);
+        Instructor i = q.uniqueResult();
+        s.close();
+        return i;
 	}
 
 

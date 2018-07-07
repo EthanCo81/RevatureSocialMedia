@@ -11,8 +11,7 @@ import { Employee } from './employee';
   providedIn: 'root'
 })
 export class EmployeeService {
-  //Might change this to just profile later
-  private appUrl = 'http://localhost:8080/RevatureSocial/employee_profile';
+  private appUrl = 'http://localhost:8080/RevatureSocial/employee';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }

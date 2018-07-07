@@ -1,7 +1,5 @@
-export class Instructor {
-    id: number;
-    username: string;
-    password: string;
-    firstname: string;
-    lastname: string;
+import { User } from './user';
+
+export class Instructor extends User {
+
 }

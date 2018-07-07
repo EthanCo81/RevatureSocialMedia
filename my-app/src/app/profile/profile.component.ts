@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { Profile } from 'src/app/profile';
 import { Employee } from 'src/app/employee';
-import { ProfileService } from '../profile.service';
+import { ProfileService } from 'src/app/profile.service';
 import { Instructor } from '../instructor';
 import { Client } from 'src/app/client';
 
