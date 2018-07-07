@@ -1,26 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'; 
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SidenavbarComponent } from './sidenavbar/sidenavbar.component';
+import { TopsearchbarComponent } from './topsearchbar/topsearchbar.component';
+//import { AppRoutingModule } from './/app-routing.module';
+import { ForumpostComponent } from './forumpost/forumpost.component';
+import { CreatepostComponent } from './createpost/createpost.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { ProfileComponent } from './profile/profile.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    ProfileComponent,
-    EditProfileComponent
+    DashboardComponent,
+    SidenavbarComponent,
+    TopsearchbarComponent,
+    ForumpostComponent,
+    CreatepostComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    //AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
