@@ -8,25 +8,25 @@ import { User } from './user';
 import { Instructor } from './instructor';
 import { Employee } from './employee';
 import { Client } from './client';
+import { CurrentUser } from './current-user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private appUrl = 'http://localhost:8080/RevatureSocialMedia/login';
-  private headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+  private appUrl = 'http://localhost:8080/RevatureSocial/login';
   private employee: Employee;
   private instructor: Instructor;
   private client: Client;
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<User> {
+ /* login(username: string, password: string): Observable<User> {
     if (username && password) {
       // we need to log in
       console.log(username);
       const body = `user=${username}&pass=${password}`;
-      return this.http.post(this.appUrl, body, { headers: this.headers, withCredentials: true }).pipe(
+      return this.http.post(this.appUrl, body, {withCredentials: true }).pipe(
         map(
           resp => {
             const user: User = resp as User;
@@ -58,6 +58,46 @@ export class UserService {
             }
             if (user instanceof Client) {
               this.client = user;
+            }
+            return user;
+          }
+        ));
+    }
+  }*/
+  login(username: string, password: string): Observable<CurrentUser> {
+    if (username && password) {
+      // we need to log in
+      console.log(username);
+      const body = `username=${username}&password=${password}`;
+
+      const trial =  new User;
+      trial.username = username;
+      trial.password = password;
+
+      const myJSON = JSON.stringify(trial);
+      console.log(myJSON);
+      return this.http.post(this.appUrl, myJSON, { withCredentials: true }).pipe(
+        map(
+          resp => {
+            const user: CurrentUser = resp as CurrentUser;
+            console.log(user);
+            this.employee = user.employee;
+            this.client = user.client;
+            this.instructor = user.instructor;
+            return user;
+          }
+        )
+      );
+    } else {
+      // we are just checking to see if we're already logged in
+      return this.http.get(this.appUrl, { withCredentials: true })
+        .pipe(map(
+          resp => {
+            const user: CurrentUser = resp as CurrentUser;
+            if (user) {
+              this.employee = user.employee;
+              this.client = user.client;
+              this.instructor = user.instructor;
             }
             return user;
           }

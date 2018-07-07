@@ -1,19 +1,22 @@
 
-<head>
+
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-</head>
+
 <!------ Include the above in your HEAD tag ---------->
-<body>
-  <div id="fullscreen_bg" class="fullscreen_bg"></div>
+  <div id="fullscreen_bg" class="fullscreen_bg">
 
   <div class="container">
 
-      <form class="form-signin">
+      <form class="form-group">
       <h3 class="form-signin-heading text-muted">Welcome to Revature Social Media</h3>
-      <input id= "username" type="text" class="form-control" placeholder="Username" required="" autofocus="">
-      <input id="password" type="password" class="form-control" placeholder="Password" required="">
+      <input [(ngModel)]= "username" name= "username" type="text" class="form-control" placeholder="Username" required="" autofocus="">
+      <input [(ngModel)]= "password" name="password" type="password" class="form-control" placeholder="Password" required="">
       <button class="btn btn-lg btn-primary btn-block" type="button" (click)= 'login()'>
         Sign In
       </button>
+    </form>
+  </div>
+
+

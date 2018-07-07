@@ -14,18 +14,6 @@ import com.revaturesocialmedia.util.HibernateUtil;
 @Component
 public class ClientManager implements ClientDAO {
 	private HibernateUtil hu = HibernateUtil.getInstance();
-	private static ClientManager inst = null;
-	
-	private ClientManager() {
-		
-	}
-	
-	public static ClientManager getInst() {
-		if (inst ==null) {
-			inst = new ClientManager();
-		}
-		return inst;
-	}
 	
 	@Override
 	public int save(Client c) {
@@ -145,7 +133,7 @@ public class ClientManager implements ClientDAO {
         Query<Client> q = s.createQuery(query, Client.class);
         q.setParameter("username", username);
         q.setParameter("password", password);
-        Client c = q.getSingleResult();
+        Client c = q.uniqueResult();
         s.close();
         return c;
 	}

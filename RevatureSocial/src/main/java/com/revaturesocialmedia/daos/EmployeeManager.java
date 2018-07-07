@@ -14,16 +14,6 @@ import com.revaturesocialmedia.util.HibernateUtil;
 @Component
 public class EmployeeManager implements EmployeeDAO{
 	private HibernateUtil hu = HibernateUtil.getInstance();
-
-	private static EmployeeManager inst = null;
-	private EmployeeManager() {
-		
-	}
-	
-	public static EmployeeDAO getInst() {
-		if(inst == null) inst = new EmployeeManager();
-		return inst;
-	}
 	
 	@Override
 	public int save(Employee emp) {
@@ -144,7 +134,7 @@ public class EmployeeManager implements EmployeeDAO{
         Query<Employee> q = s.createQuery(query, Employee.class);
         q.setParameter("username", username);
         q.setParameter("password", password);
-        Employee e = q.getSingleResult();
+        Employee e = q.uniqueResult();
         s.close();
         return e;
 	}
