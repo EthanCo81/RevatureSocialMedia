@@ -14,69 +14,26 @@ import { CurrentUser } from './current-user';
   providedIn: 'root'
 })
 export class UserService {
-  private appUrl = 'http://localhost:8080/RevatureSocial/login';
+  private appUrl = 'http://localhost:8080/RevatureSocial/';
   private employee: Employee;
   private instructor: Instructor;
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   private client: Client;
 
   constructor(private http: HttpClient) { }
 
- /* login(username: string, password: string): Observable<User> {
+  login(username: string, password: string): Observable<User> {
     if (username && password) {
       // we need to log in
       console.log(username);
-      const body = `user=${username}&pass=${password}`;
-      return this.http.post(this.appUrl, body, {withCredentials: true }).pipe(
-        map(
-          resp => {
-            const user: User = resp as User;
-            console.log(user);
-            if (user instanceof Employee) {
-              this.employee = user;
-            }
-            if (user instanceof Instructor) {
-              this.instructor = user;
-            }
-            if (user instanceof Client) {
-              this.client = user;
-            }
-            return user;
-          }
-        )
-      );
-    } else {
-      // we are just checking to see if we're already logged in
-      return this.http.get(this.appUrl, { withCredentials: true })
-        .pipe(map(
-          resp => {
-            const user: User = resp as User;
-            if (user instanceof Employee) {
-              this.employee = user;
-            }
-            if (user instanceof Instructor) {
-              this.instructor = user;
-            }
-            if (user instanceof Client) {
-              this.client = user;
-            }
-            return user;
-          }
-        ));
-    }
-  }*/
-  login(username: string, password: string): Observable<CurrentUser> {
-    if (username && password) {
-      // we need to log in
-      console.log(username);
-      const body = `username=${username}&password=${password}`;
 
       const trial =  new User;
       trial.username = username;
       trial.password = password;
-
+      console.log(trial);
       const myJSON = JSON.stringify(trial);
       console.log(myJSON);
-      return this.http.post(this.appUrl, myJSON, { withCredentials: true }).pipe(
+      return this.http.post(this.appUrl + 'login', myJSON, { headers: this.headers, withCredentials: true }).pipe(
         map(
           resp => {
             const user: CurrentUser = resp as CurrentUser;
@@ -84,13 +41,14 @@ export class UserService {
             this.employee = user.employee;
             this.client = user.client;
             this.instructor = user.instructor;
-            return user;
+            console.log(this);
+            return (this.employee != null) ? this.employee : (this.client != null) ? this.client : this.instructor;
           }
         )
       );
     } else {
       // we are just checking to see if we're already logged in
-      return this.http.get(this.appUrl, { withCredentials: true })
+      return this.http.get(this.appUrl + 'login', { withCredentials: true })
         .pipe(map(
           resp => {
             const user: CurrentUser = resp as CurrentUser;
@@ -98,14 +56,15 @@ export class UserService {
               this.employee = user.employee;
               this.client = user.client;
               this.instructor = user.instructor;
+              
             }
-            return user;
+            return (this.employee != null) ? this.employee : (this.client != null) ? this.client : this.instructor;
           }
         ));
     }
   }
   logout(): Observable<Object> {
-    return this.http.delete(this.appUrl, { withCredentials: true }).pipe(
+    return this.http.delete(this.appUrl + 'login', { withCredentials: true }).pipe(
       map(success => {
         this.employee = null;
         this.client = null;
