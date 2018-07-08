@@ -12,4 +12,9 @@ export class CreatepostComponent implements OnInit {
   ngOnInit() {
   }
 
+  submitQuestion(): void{
+    //create questionService and link with backend DAOs
+    //then submit the given fields
+  }
+
 }
