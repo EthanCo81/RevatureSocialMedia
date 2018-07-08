@@ -11,6 +11,7 @@ import { Client } from './client';
 import { EmployeeService } from './employee.service';
 import { InstructorService } from './instructor.service';
 import { ClientService } from './client.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -27,18 +28,19 @@ export class ProfileService {
     private http: HttpClient,
     private employeeService: EmployeeService,
     private instructorService: InstructorService,
-    private clientService: ClientService
+    private clientService: ClientService,
+    private userService: UserService
   ) { }
 
   isEmployee(): boolean {
-    return this.employeeService.isEmployee();
+    return this.userService.isEmployee();
   }
 
   isInstructor(): boolean {
-    return this.instructorService.isInstructor();
+    return this.userService.isInstructor();
   }
 
   isClient(): boolean {
-    return this.clientService.isClient();
+    return this.userService.isClient();
   }
 }

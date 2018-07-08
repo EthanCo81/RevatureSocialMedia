@@ -11,6 +11,7 @@ import { Client } from 'src/app/client';
 import { EmployeeService } from 'src/app/employee.service';
 import { InstructorService } from 'src/app/instructor.service';
 import { ClientService } from 'src/app/client.service';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,9 +22,10 @@ export class ProfileComponent implements OnInit {
   @Input() profile: Profile;
   constructor(
     private profileService: ProfileService,
-    private employeeService: EmployeeService,
-    private instructorService: InstructorService,
-    private clientService: ClientService,
+    // private employeeService: EmployeeService,
+    // private instructorService: InstructorService,
+    // private clientService: ClientService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
     private location: Location) {
@@ -41,19 +43,19 @@ export class ProfileComponent implements OnInit {
       this.profileService.getEmp(id).subscribe(
           emp => this.employee = emp);
     }*/
-    this.client = this.clientService.getClient();
-    this.employee = this.employeeService.getEmployee();
-    this.instructor = this.instructorService.getInstructor();
+    this.client = this.userService.getClient();
+    this.employee = this.userService.getEmployee();
+    this.instructor = this.userService.getInstructor();
   }
   
   isClient(): boolean{
-    return this.clientService.isClient();
+    return this.userService.isClient();
   }
   isInstructor(): boolean {
-    return this.instructorService.isInstructor();
+    return this.userService.isInstructor();
   }
   isEmployee(): boolean {
-    return this.employeeService.isEmployee();
+    return this.userService.isEmployee();
   }
 
   editEmp(): void {

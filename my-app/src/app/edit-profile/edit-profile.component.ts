@@ -13,6 +13,7 @@ import { Client } from 'src/app/client';
 import { EmployeeService } from 'src/app/employee.service';
 import { InstructorService } from 'src/app/instructor.service';
 import { ClientService } from 'src/app/client.service';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -26,6 +27,7 @@ export class EditProfileComponent implements OnInit {
     private employeeService: EmployeeService,
     private instructorService: InstructorService,
     private clientService: ClientService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
     private location: Location) { }
@@ -42,9 +44,9 @@ export class EditProfileComponent implements OnInit {
 
     
 
-    this.client = this.clientService.getClient();
-    this.employee = this.employeeService.getEmployee();
-    this.instructor = this.instructorService.getInstructor();
+    this.client = this.userService.getClient();
+    this.employee = this.userService.getEmployee();
+    this.instructor = this.userService.getInstructor();
 
     if (this.profileService.isEmployee()) {
       this.employeeService.getEmp(id).subscribe(
