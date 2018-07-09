@@ -1,6 +1,6 @@
 <div class="col-lg-12 row"><H1>PROFILE</H1></div>
-<ng-template [ngIf]="employee" [ngIfElse]="instructor" [ngIfElse]="client">
-<div class="container border">
+
+<div class="container border" *ngIf="employee">
   <div class="row">
     <div class="col-sm border card">
       <h4 class="border border-dark mx-auto">{{employee.firstname}} {{employee.lastname}}</h4>
@@ -27,9 +27,9 @@
       <button class="btn btn-primary" (click)="editEmp()">Submit</button>
   </div>
 </div>
-</ng-template>
-<ng-template #instructor>
-<div class="container border">
+
+
+<div class="container border" *ngIf="instructor">
   <div class="row">
     <div class="col-sm border card">
       <h4 class="border border-dark mx-auto">{{instructor.firstname}} {{instructor.lastname}}</h4>
@@ -56,12 +56,11 @@
   </div>
 </div>
 </div>
-</ng-template>
-<ng-template #client>
-<div class="container border">
+
+<div class="container border" *ngIf="client">
   <div class="row">
     <div class="col-sm border card">
-      <h4 class="border border-dark mx-auto">{{client.firstname}}</h4>
+      <h4 class="border border-dark mx-auto">{{client.company}}</h4>
       
     </div>
     <div class="col-sm">
@@ -78,11 +77,10 @@
           <label>First Name:</label> {{client.firstname}}
         </div>
         <div class="col-sm-3">
-          <label>Last Name:</label> {{client.firstname}}
+          <label>Last Name:</label> {{client.lastname}}
         </div>
       </div>
       <button class="btn btn-primary" (click)="editCln()">Submit</button>
   </div>
 </div>
 </div>
-</ng-template>

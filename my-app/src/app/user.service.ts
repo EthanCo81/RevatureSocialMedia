@@ -20,7 +20,15 @@ export class UserService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   private client: Client;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    // this.client = new Client();
+    // this.client.firstname = "Chris";
+    // this.client.username = "crobins";
+    // this.client.lastname = "Robins";
+    // this.client.id = 2523;
+    // this.client.password = "pooh";
+    // this.client.company = "Bank";
+  }
 
   login(username: string, password: string): Observable<User> {
     if (username && password) {
@@ -76,6 +84,9 @@ export class UserService {
       })
     );
   }
+
+    
+
   getInstructor(): Instructor {
     return this.instructor;
   }

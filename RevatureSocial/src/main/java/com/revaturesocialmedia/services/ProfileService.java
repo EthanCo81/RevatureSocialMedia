@@ -1,16 +1,16 @@
 package com.revaturesocialmedia.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revaturesocialmedia.beans.Client;
 import com.revaturesocialmedia.beans.Employee;
 import com.revaturesocialmedia.beans.Instructor;
 import com.revaturesocialmedia.daos.ClientDAO;
-import com.revaturesocialmedia.daos.ClientManager;
 import com.revaturesocialmedia.daos.EmployeeDAO;
 import com.revaturesocialmedia.daos.InstructorDAO;
-import com.revaturesocialmedia.daos.InstructorManager;
 
+@Service
 public class ProfileService {
 	
 	@Autowired
@@ -39,15 +39,15 @@ public class ProfileService {
 	}
 	
 	public void updateEmpProfile (Employee e) {
-		empDaoInst.save(e);
+		empDaoInst.update(e);
 	}
 	
 	public void updateInstProfile (Instructor i) {
-		instructorDaoInst.save(i);
+		instructorDaoInst.update(i);
 	}
 	
 	public void updateClientProfile (Client c) {
-		clientDaoInst.save(c);
+		clientDaoInst.update(c);
 	}
 
 }

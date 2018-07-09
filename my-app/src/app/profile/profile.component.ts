@@ -43,17 +43,24 @@ export class ProfileComponent implements OnInit {
       this.profileService.getEmp(id).subscribe(
           emp => this.employee = emp);
     }*/
-    //this.client = this.userService.getClient();
     
+    this.client = this.userService.getClient();
     this.employee = this.userService.getEmployee();
     this.instructor = this.userService.getInstructor();
     
-    this.employee = new Employee();
-    this.employee.firstname = "Harry";
-    this.employee.username = "hsmith";
-    this.employee.lastname = "Smith";
-    this.employee.id = 2521;
-    this.employee.password = "pass";
+    // this.employee = new Employee();
+    // this.employee.firstname = "Harry";
+    // this.employee.username = "hsmith";
+    // this.employee.lastname = "Smith";
+    // this.employee.id = 2521;
+    // this.employee.password = "pass";
+    
+    // this.instructor = new Instructor();
+    // this.instructor.firstname = "Harry";
+    // this.instructor.username = "hsmith";
+    // this.instructor.lastname = "Smith";
+    // this.instructor.id = 2521;
+    // this.instructor.password = "pass";
     //this.client.company = "Not Revature";
     
     

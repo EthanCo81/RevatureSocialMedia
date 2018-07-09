@@ -3,27 +3,19 @@
     <div class="row">
       <div class="col-sm">
         <div class="row">
-          <div class="col">
-            <h5>Username:</h5>
+          <div class="col-sm-3">
+            <label>Username: </label> <input type="text" [(ngModel)]="employee.username" name="username">
           </div>
-          <div class="col">
-            <!--<input type="text" [(ngModel)]="employee.username" name="username">-->
-          </div>
+          <div class="col-sm-3">
+            <label>Password:</label> <input type="text" [(ngModel)]="employee.password" name="password">
+          </div>          
         </div>
         <div class="row">
-          <div class="col">
-            <h5>Password:</h5>
+          <div class="col-sm-3">
+            <label>First Name:</label> <input type="text" [(ngModel)]="employee.firstname" name="firstname">
           </div>
-          <div class="col">
-           <input type="text" [(ngModel)]="employee.password" name="password">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <h5>First Name:</h5>
-          </div>
-          <div class="col">
-           <input type="text" [(ngModel)]="employee.firstname" name="firstname">
+          <div class="col-sm-3">
+            <label>Last Name:</label> <input type="text" [(ngModel)]="employee.lastname" name="lastname">
           </div>
         </div>
       <button class="btn btn-primary" (click)="submit()">Submit</button>
@@ -37,27 +29,19 @@
     <div class="row">
       <div class="col-sm">
         <div class="row">
-          <div class="col">
-            <h5>Username:</h5>
+          <div class="col-sm-3">
+            <label>Username:</label> <input type="text" [(ngModel)]="instructor.username" name="username">
           </div>
-          <div class="col">
-           <input type="text" [(ngModel)]="instructor.username" name="username">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <h5>Password:</h5>
-          </div>
-          <div class="col">
-          <!--  <input type="text" [(ngModel)]="instructor.password" name="password">-->
+          <div class="col-sm-3">
+            <label>Password:</label> <input type="text" [(ngModel)]="instructor.password" name="password">
           </div>
         </div>
         <div class="row">
-          <div class="col">
-            <h5>First Name:</h5>
+          <div class="col-sm-3">
+            <label>First Name:</label> <input type="text" [(ngModel)]="instructor.firstname" name="firstname">
           </div>
-          <div class="col">
-         <!--   <input type="text" [(ngModel)]="instructor.firstname" name="firstname">-->
+          <div class="col-sm-3">
+            <label>Last Name:</label> <input type="text" [(ngModel)]="instructor.lastname" name="lastname">
           </div>
         </div>
       <button class="btn btn-primary" (click)="submit()">Submit</button>
@@ -71,27 +55,22 @@
     <div class="row">
       <div class="col-sm">
         <div class="row">
-          <div class="col">
-            <h5>Username:</h5>
+          <div class="col-sm-3">
+            <label>Company:</label> <input type="text" [(ngModel)]="client.company" name="company">
           </div>
-          <div class="col">
-          <!--  <input type="text" [(ngModel)]="client.username" name="username">-->
+          <div class="col-sm-3">
+            <label>Username:</label> <input type="text" [(ngModel)]="client.username" name="username">
           </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <h5>Password:</h5>
-          </div>
-          <div class="col">
-          <!--  <input type="text" [(ngModel)]="client.password" name="password">-->
+          <div class="col-sm-3">
+            <label>Password:</label> <input type="text" [(ngModel)]="client.password" name="password">
           </div>
         </div>
         <div class="row">
-          <div class="col">
-            <h5>First Name:</h5>
+          <div class="col-sm-3">
+            <label>First Name:</label> <input type="text" [(ngModel)]="client.firstname" name="firstname">
           </div>
-          <div class="col">
-          <!--  <input type="text" [(ngModel)]="client.firstname" name="firstname">-->
+          <div class="col-sm-3">
+            <label>Last Name:</label> <input type="text" [(ngModel)]="client.lastname" name="lastname">
           </div>
         </div>
       <button class="btn btn-primary" (click)="submit()">Submit</button>
