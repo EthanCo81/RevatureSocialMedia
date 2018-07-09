@@ -39,6 +39,7 @@ export class UserService {
             const user: CurrentUser = resp as CurrentUser;
             console.log(user);
             this.employee = user.employee;
+            console.log("User's employee: " + this.employee);
             this.client = user.client;
             this.instructor = user.instructor;
             console.log(this);
@@ -52,8 +53,10 @@ export class UserService {
         .pipe(map(
           resp => {
             const user: CurrentUser = resp as CurrentUser;
+            console.log("User: " + user);
             if (user) {
               this.employee = user.employee;
+              console.log ("User's Employee: " + user.employee);
               this.client = user.client;
               this.instructor = user.instructor;
               

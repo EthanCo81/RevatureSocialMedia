@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revaturesocialmedia.beans.Client;
 import com.revaturesocialmedia.beans.Employee;
 import com.revaturesocialmedia.beans.Instructor;
@@ -18,7 +19,7 @@ import com.revaturesocialmedia.services.ProfileService;
 @Controller
 @CrossOrigin(origins="http://localhost:4200")
 public class ProfileController {
-	
+	private ObjectMapper om = new ObjectMapper();
 	@Autowired
 	private ProfileService profile;
 	

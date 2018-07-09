@@ -98,7 +98,7 @@ export class EditProfileComponent implements OnInit {
     }
 
     if (this.profileService.isClient()) {
-      this.clientService.updateClnt(this.instructor).subscribe(
+      this.clientService.updateClnt(this.client).subscribe(
         cln => {
           this.client = cln;
           this.router.navigate(['/profile']);

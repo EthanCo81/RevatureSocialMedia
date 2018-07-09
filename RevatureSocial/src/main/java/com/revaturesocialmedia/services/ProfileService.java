@@ -1,21 +1,24 @@
 package com.revaturesocialmedia.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.revaturesocialmedia.beans.Client;
 import com.revaturesocialmedia.beans.Employee;
 import com.revaturesocialmedia.beans.Instructor;
-import com.revaturesocialmedia.beans.User;
 import com.revaturesocialmedia.daos.ClientDAO;
 import com.revaturesocialmedia.daos.ClientManager;
 import com.revaturesocialmedia.daos.EmployeeDAO;
-import com.revaturesocialmedia.daos.EmployeeManager;
 import com.revaturesocialmedia.daos.InstructorDAO;
 import com.revaturesocialmedia.daos.InstructorManager;
 
 public class ProfileService {
 	
-	private static final EmployeeDAO empDaoInst = EmployeeManager.getInst();
-	private static final InstructorDAO instructorDaoInst = InstructorManager.getInst();
-	private static final ClientDAO clientDaoInst = ClientManager.getInst();
+	@Autowired
+	private EmployeeDAO empDaoInst;
+	@Autowired
+	private InstructorDAO instructorDaoInst;
+	@Autowired
+	private ClientDAO clientDaoInst;
 	
 	public Employee getEmpProfile(int id) {
 		Employee emp = null;
