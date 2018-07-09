@@ -56,7 +56,6 @@ export class UserService {
               this.employee = user.employee;
               this.client = user.client;
               this.instructor = user.instructor;
-              
             }
             return (this.employee != null) ? this.employee : (this.client != null) ? this.client : this.instructor;
           }
