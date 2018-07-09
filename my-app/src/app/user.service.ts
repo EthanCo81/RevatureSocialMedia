@@ -20,7 +20,15 @@ export class UserService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   private client: Client;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    // this.client = new Client();
+    // this.client.firstname = "Chris";
+    // this.client.username = "crobins";
+    // this.client.lastname = "Robins";
+    // this.client.id = 2523;
+    // this.client.password = "pooh";
+    // this.client.company = "Bank";
+  }
 
   login(username: string, password: string): Observable<User> {
     if (username && password) {
@@ -39,6 +47,7 @@ export class UserService {
             const user: CurrentUser = resp as CurrentUser;
             console.log(user);
             this.employee = user.employee;
+            console.log("User's employee: " + this.employee);
             this.client = user.client;
             this.instructor = user.instructor;
             console.log(this);
@@ -54,8 +63,10 @@ export class UserService {
         .pipe(map(
           resp => {
             const user: CurrentUser = resp as CurrentUser;
+            console.log("User: " + user);
             if (user) {
               this.employee = user.employee;
+              console.log ("User's Employee: " + user.employee);
               this.client = user.client;
               this.instructor = user.instructor;
             }
@@ -74,6 +85,9 @@ export class UserService {
       })
     );
   }
+
+    
+
   getInstructor(): Instructor {
     return this.instructor;
   }
