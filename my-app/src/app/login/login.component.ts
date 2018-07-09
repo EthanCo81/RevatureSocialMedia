@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.userService.login(this.username, this.password).subscribe(user => {this.loggedUser = user; });
+    this.userService.login(this.username, this.password).subscribe(x => {this.loggedUser = x; });
+    console.log(this.loggedUser);
     if (this.loggedUser != null && this.loggedUser !== undefined) {
       this.router.navigate(['./homepage']);
     } else {

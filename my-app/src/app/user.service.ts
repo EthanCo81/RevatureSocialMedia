@@ -42,7 +42,9 @@ export class UserService {
             this.client = user.client;
             this.instructor = user.instructor;
             console.log(this);
-            return (this.employee != null) ? this.employee : (this.client != null) ? this.client : this.instructor;
+            return (this.employee != null && this.employee !== undefined) ? this.employee :
+            (this.client != null && this.client !== undefined)
+             ? this.client : this.instructor;
           }
         )
       );
