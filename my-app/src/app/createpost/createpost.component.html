@@ -1,0 +1,16 @@
+<div class="modal-content">
+  <div class="modal-header login-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <h4 class="modal-title">Post a question in the forum!</h4>
+  </div>
+  <div class="modal-body">
+              <input [(ngModel)]="questiontitle" placeholder="Question Title" name="questiontitle" required="" autofocus="">
+              <input [(ngModel)]="relevantlanguages" placeholder="Relevant Languages" name="relevantlanguages" required="">
+              <input [(ngModel)]="relevanttechnologies" placeholder="Relevant Technologies" name="relevanttechnologies" required="">
+              <textarea [(ngModel)]="description" placeholder="Detailed Description"></textarea>
+      </div>
+  <div class="modal-footer">
+      <a routerLink="/homepage" class="cancel">Close</a>
+      <button type="button" class="add-project" (click)="submitQuestion()">Submit Question!</button>
+  </div>
+</div>
