@@ -17,6 +17,12 @@ export class InstructorService {
 
   constructor(private http: HttpClient) { }
 
+  instructor: Instructor;
+
+  setInstructor(inst: Instructor){
+    this.instructor = inst;
+  }
+
   getInsts(): Observable<Instructor[]> {
     return this.http.get(this.appUrl, { withCredentials: true }).pipe(
       map( resp => resp as Instructor[])
@@ -42,10 +48,10 @@ export class InstructorService {
     }
   }
 
-  // getInstructor(): Instructor {
-  //   return this.instructor;
-  // }
-  // isInstructor() {
-  //   return (this.instructor !== undefined && this.instructor !== null);
-  // }
+  getInstructor(): Instructor {
+    return this.instructor;
+  }
+  isInstructor() {
+    return (this.instructor !== undefined && this.instructor !== null);
+  }
 }

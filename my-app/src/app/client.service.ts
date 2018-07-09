@@ -18,6 +18,12 @@ export class ClientService {
 
   constructor(private http: HttpClient) { }
 
+  client: Client;
+
+  setClient(cln: Client){
+    this.client = cln;
+  }
+
   getClns(): Observable<Client[]> {
     return this.http.get(this.appUrl, { withCredentials: true }).pipe(
       map( resp => resp as Client[])
@@ -43,10 +49,10 @@ export class ClientService {
     }
   }
 
-  // getClient(): Client {
-  //   return this.client;
-  // }
-  // isClient() {
-  //   return (this.client !== undefined && this.client !== null);
-  // }
+  getClient(): Client {
+    return this.client;
+  }
+  isClient() {
+    return (this.client !== undefined && this.client !== null);
+  }
 }

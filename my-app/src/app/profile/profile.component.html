@@ -1,78 +1,86 @@
-Hello. This is your profile
+<div class="col-lg-12 row"><H1>PROFILE</H1></div>
+
 <div class="container border" *ngIf="employee">
   <div class="row">
     <div class="col-sm border card">
-      <h4 class="border border-dark mx-auto">{{employee.firstname}}</h4>
+      <h4 class="border border-dark mx-auto">{{employee.firstname}} {{employee.lastname}}</h4>
       
     </div>
-    <div class="col-sm">
+    <div class="col">
       <div class="row">
-        <div class="col">
-          <h5>Username:</h5>
+        <div class="col-sm-3">
+          <label>ID: </label> {{employee.id}}
         </div>
-        <div class="col">
-          <p>{{employee.username}}</p>
+        <div class="col-sm-3">
+          <label>Username: </label> {{employee.username}}
+        </div>
+      </div>      
+    </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <label>Name:</label> {{employee.firstname}}
+        </div>
+        <div class="col-sm-2">
+          <label>Name:</label> {{employee.lastname}}
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <h5>First Name:</h5>
-        </div>
-        <div class="col">
-          <p>{{employee.firstname}}</p>
-        </div>
-      </div>
+      <button class="btn btn-primary" (click)="editEmp()">Submit</button>
   </div>
 </div>
+
 
 <div class="container border" *ngIf="instructor">
   <div class="row">
     <div class="col-sm border card">
-      <h4 class="border border-dark mx-auto">{{instructor.firstname}}</h4>
+      <h4 class="border border-dark mx-auto">{{instructor.firstname}} {{instructor.lastname}}</h4>
       
     </div>
     <div class="col-sm">
       <div class="row">
-        <div class="col">
-          <h5>Username:</h5>
+        <div class="col-sm-3">
+          <label>ID:</label> {{instructor.id}}
         </div>
-        <div class="col">
-          <p>{{instructor.username}}</p>
+        <div class="col-sm-3">
+          <label>Username:</label> {{instructor.username}}
         </div>
       </div>
       <div class="row">
-        <div class="col">
-          <h5>First Name:</h5>
+        <div class="col-sm-3">
+          <label>First Name:</label> {{instructor.firstname}}
         </div>
-        <div class="col">
-          <p>{{instructor.firstname}}</p>
+        <div class="col-sm-3">
+          <label>Last Name:</label> {{instructor.lastname}}
         </div>
       </div>
+      <button class="btn btn-primary" (click)="editIns()">Submit</button>
   </div>
+</div>
 </div>
 
 <div class="container border" *ngIf="client">
   <div class="row">
     <div class="col-sm border card">
-      <h4 class="border border-dark mx-auto">{{client.firstname}}</h4>
+      <h4 class="border border-dark mx-auto">{{client.company}}</h4>
       
     </div>
     <div class="col-sm">
       <div class="row">
-        <div class="col">
-          <h5>Username:</h5>
+        <div class="col-sm-3">
+            <label>ID:</label> {{client.id}}
         </div>
-        <div class="col">
-          <p>{{client.username}}</p>
+        <div class="col-sm-3">
+            <label>Username:</label> {{client.username}}
         </div>
       </div>
       <div class="row">
-        <div class="col">
-          <h5>First Name:</h5>
+        <div class="col-sm-3">
+          <label>First Name:</label> {{client.firstname}}
         </div>
-        <div class="col">
-          <p>{{client.firstname}}</p>
+        <div class="col-sm-3">
+          <label>Last Name:</label> {{client.lastname}}
         </div>
       </div>
+      <button class="btn btn-primary" (click)="editCln()">Submit</button>
   </div>
+</div>
 </div>

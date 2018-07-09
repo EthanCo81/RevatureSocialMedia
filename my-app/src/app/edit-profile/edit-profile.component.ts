@@ -13,6 +13,7 @@ import { Client } from 'src/app/client';
 import { EmployeeService } from 'src/app/employee.service';
 import { InstructorService } from 'src/app/instructor.service';
 import { ClientService } from 'src/app/client.service';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -20,26 +21,41 @@ import { ClientService } from 'src/app/client.service';
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
-  public employee: Employee;
-  public instructor: Instructor;
-  public client: Client;
 
   constructor(
     private profileService: ProfileService,
     private employeeService: EmployeeService,
     private instructorService: InstructorService,
     private clientService: ClientService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
     private location: Location) { }
 
+    public employee: Employee;
+    public instructor: Instructor;
+    public client: Client;
+
   ngOnInit(): void {
-    // TODO replace username with id
-    console.log('Hello from edit-profile\'s oninit()');
+    
+    console.log("Hello from edit-profile's oninit()")
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
 
-    /*if (this.profileService.isEmployee()) {
+    
+
+    this.client = this.userService.getClient();
+    this.employee = this.userService.getEmployee();
+    this.instructor = this.userService.getInstructor();
+
+    // this.employee = new Employee();
+    // this.employee.firstname = "Harry";
+    // this.employee.username = "hsmith";
+    // this.employee.lastname = "Smith";
+    // this.employee.id = 2521;
+    // this.employee.password = "pass";
+
+    if (this.profileService.isEmployee()) {
       this.employeeService.getEmp(id).subscribe(
         emp => {
           // set current employee to the emp retrieved.
@@ -48,14 +64,14 @@ export class EditProfileComponent implements OnInit {
       );
     }
 
-    if (this.profileService.isInstructor()) {
-      this.instructorService.getIns(id).subscribe(
-        ins => {
-          // set current employee to the emp retrieved.
-          this.instructor = ins;
-        }
-      );
-    }
+    // if (this.profileService.isInstructor()) {
+    //   this.instructorService.getIns(id).subscribe(
+    //     ins => {
+    //       // set current employee to the emp retrieved.
+    //       this.instructor = ins;
+    //     }
+    //   );
+    // }
 
     if (this.profileService.isClient()) {
       this.clientService.getClnt(id).subscribe(
@@ -64,10 +80,10 @@ export class EditProfileComponent implements OnInit {
           this.client = cln;
         }
       );
-    }*/
+    }
   }
 
- /* submit(): void {
+  submit(): void {
     if (this.profileService.isEmployee()) {
       this.employeeService.updateEmp(this.employee).subscribe(
         emp => {
@@ -89,7 +105,7 @@ export class EditProfileComponent implements OnInit {
     }
 
     if (this.profileService.isClient()) {
-      this.clientService.updateClnt(this.instructor).subscribe(
+      this.clientService.updateClnt(this.client).subscribe(
         cln => {
           this.client = cln;
           this.router.navigate(['/profile']);
@@ -97,6 +113,6 @@ export class EditProfileComponent implements OnInit {
       );
       console.log(this.client);
     }
-  }*/
+  }
 
 }
