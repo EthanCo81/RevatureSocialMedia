@@ -24,6 +24,11 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.userService.login(this.username, this.password).subscribe(user => {this.loggedUser = user; });
+    if (this.loggedUser != null && this.loggedUser !== undefined) {
+      this.router.navigate(['./homepage']);
+    } else {
+      this.router.navigate(['./login']);
+    }
   }
 
   logout(): void {
