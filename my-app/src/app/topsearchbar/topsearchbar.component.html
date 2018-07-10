@@ -29,30 +29,10 @@
           <div class="header-rightside">
               <ul class="list-inline header-top pull-right">
                   <li class="hidden-xs"><a routerLink="/createpost" class="add-project">Ask a question!</a></li>
-                  <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-                  <li>
-                      <a href="#" class="icon-info">
-                          <i class="fa fa-bell" aria-hidden="true"></i>
-                          <span class="label label-primary">3</span>
-                      </a>
-                  </li>
+                 
+                  
                   <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="https://media.giphy.com/media/xiAqCzbB3eZvG/giphy.gif" alt="user">
-                          <b class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                          <li>
-                              <div class="navbar-content">
-                                  <span>Lawrence of Arabia</span>
-                                  <p class="text-muted small">
-                                      VegetableEater@iHateMeat.com
-                                  </p>
-                                  <div class="divider">
-                                  </div>
-                                  <a href="#" class="view btn-sm active">View Profile</a>
-                                  <a href="#" class="view btn-sm active">Log out!</a>
-                              </div>
-                          </li>
-                      </ul>
+                    <button id="logout" type = "submit" class = "btn btn-danger" (on-click) = 'logout()'>Logout</button>
                   </li>
               </ul>
           </div>
