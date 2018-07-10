@@ -22,9 +22,9 @@ export class ProfileComponent implements OnInit {
   @Input() profile: Profile;
   constructor(
     private profileService: ProfileService,
-    // private employeeService: EmployeeService,
-    // private instructorService: InstructorService,
-    // private clientService: ClientService,
+    private employeeService: EmployeeService,
+    private instructorService: InstructorService,
+    private clientService: ClientService,
     private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
@@ -38,11 +38,16 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     //TODO: Change to recognize what type of person is logged in (employee, instructor, or client)
     const id = +this.route.snapshot.paramMap.get('id');
+    console.log(id);
 
-    /*if (id) {
-      this.profileService.getEmp(id).subscribe(
+    if (id) {
+      this.employeeService.getEmp(id).subscribe(
           emp => this.employee = emp);
-    }*/
+      this.instructorService.getIns(id).subscribe(
+        ins => this.instructor = ins);
+      this.clientService.getClnt(id).subscribe(
+        clns => this.client = clns);
+    }
     
     this.client = this.userService.getClient();
     this.employee = this.userService.getEmployee();
