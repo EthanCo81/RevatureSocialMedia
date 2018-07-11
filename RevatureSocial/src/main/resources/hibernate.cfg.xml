@@ -22,5 +22,6 @@
 		<mapping class="com.revaturesocialmedia.beans.Employee"/>
 		<mapping class="com.revaturesocialmedia.beans.Instructor"/>
 		<mapping class="com.revaturesocialmedia.beans.Client"/>
+		<mapping class="com.revaturesocialmedia.beans.Answer"/>
 	</session-factory>
 </hibernate-configuration>

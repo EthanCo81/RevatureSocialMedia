@@ -29,14 +29,13 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private location: Location) {
-    
    }
 
   employee: Employee;
   instructor: Instructor;
   client: Client;
   ngOnInit() {
-    //TODO: Change to recognize what type of person is logged in (employee, instructor, or client)
+    // TODO: Change to recognize what type of person is logged in (employee, instructor, or client)
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
 
@@ -52,29 +51,24 @@ export class ProfileComponent implements OnInit {
     this.client = this.userService.getClient();
     this.employee = this.userService.getEmployee();
     this.instructor = this.userService.getInstructor();
-    
     // this.employee = new Employee();
     // this.employee.firstname = "Harry";
     // this.employee.username = "hsmith";
     // this.employee.lastname = "Smith";
     // this.employee.id = 2521;
     // this.employee.password = "pass";
-    
     // this.instructor = new Instructor();
     // this.instructor.firstname = "Harry";
     // this.instructor.username = "hsmith";
     // this.instructor.lastname = "Smith";
     // this.instructor.id = 2521;
     // this.instructor.password = "pass";
-    //this.client.company = "Not Revature";
-    
-    
-    console.log ("Instructor: " + this.instructor);
-    console.log ("Profile's Employee: " + this.employee);
-    console.log ("Client: " + this.client);
+    // this.client.company = "Not Revature";
+    console.log ('Instructor: ' + this.instructor);
+    console.log ('Employee: ' + this.employee);
+    console.log ('Client: ' + this.client);
   }
-  
-  isClient(): boolean{
+  isClient(): boolean {
     return this.userService.isClient();
   }
   isInstructor(): boolean {

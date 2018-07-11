@@ -31,9 +31,8 @@ public class LoginController {
 	private ObjectMapper om = new ObjectMapper();
 	@Autowired
 	private LoginService login;
-	
-	
 
+	@CrossOrigin(origins="http://localhost:4200")
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String goLogin(HttpSession session) throws JsonProcessingException {
 		System.out.println("get: login");
@@ -42,7 +41,7 @@ public class LoginController {
 		}
 		return null;
 	}
-	
+	@CrossOrigin(origins="http://localhost:4200")
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(@RequestBody() UserPass up, HttpSession session) throws JsonProcessingException{	
 		
