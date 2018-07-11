@@ -14,11 +14,12 @@ import { CurrentUser } from './current-user';
   providedIn: 'root'
 })
 export class UserService {
+  private static employee: Employee;
+  private static instructor: Instructor;
+  private static client: Client;
   private appUrl = 'http://localhost:8080/RevatureSocial/';
-  private employee: Employee;
-  private instructor: Instructor;
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private client: Client;
+
 
   constructor(private http: HttpClient) {
     this.employee = new Employee();
@@ -47,14 +48,13 @@ export class UserService {
         map(
           resp => {
             const user: CurrentUser = resp as CurrentUser;
-            console.log(user);
-            this.employee = user.employee;
-            this.client = user.client;
-            this.instructor = user.instructor;
-            console.log(this);
-            return ( this.employee !== undefined) ? this.employee :
-            (this.client !== undefined)
-             ? this.client : this.instructor;
+            UserService.employee = user.employee;
+            console.log(UserService.employee);
+            UserService.client = user.client;
+            UserService.instructor = user.instructor;
+            return ( UserService.employee !== undefined) ? UserService.employee :
+            (UserService.client !== undefined)
+             ? UserService.client : UserService.instructor;
           }
         )
       );
@@ -66,12 +66,12 @@ export class UserService {
             const user: CurrentUser = resp as CurrentUser;
             console.log('User: ' + user);
             if (user) {
-              this.employee = user.employee;
-              console.log ('Users Employee: ' + user.employee);
-              this.client = user.client;
-              this.instructor = user.instructor;
+              UserService.employee = user.employee;
+              UserService.client = user.client;
+              UserService.instructor = user.instructor;
             }
-            return (this.employee != null) ? this.employee : (this.client != null) ? this.client : this.instructor;
+            return (UserService.employee != null) ? UserService.employee :
+            (UserService.client != null) ? UserService.client : UserService.instructor;
           }
         ));
     }
@@ -79,9 +79,10 @@ export class UserService {
   logout(): Observable<Object> {
     return this.http.delete(this.appUrl + 'login', { withCredentials: true }).pipe(
       map(success => {
-        this.employee = null;
-        this.client = null;
-        this.instructor = null;
+        console.log('logout');
+        UserService.employee = null;
+        UserService.client = null;
+        UserService.instructor = null;
         return success;
       })
     );
@@ -89,21 +90,23 @@ export class UserService {
 
 
   getInstructor(): Instructor {
-    return this.instructor;
+    return UserService.instructor;
   }
   getEmployee(): Employee {
-    return this.employee;
+    console.log('getEmp');
+    console.log(UserService.employee);
+    return UserService.employee;
   }
   getClient(): Client {
-    return this.client;
+    return UserService.client;
   }
   isEmployee() {
-    return (this.employee !== undefined && this.employee !== null);
+    return (UserService.employee !== undefined && UserService.employee !== null);
   }
   isInstructor() {
-    return (this.instructor !== undefined && this.instructor !== null);
+    return (UserService.instructor !== undefined && UserService.instructor !== null);
   }
   isClient() {
-    return (this.client !== undefined && this.client !== null);
+    return (UserService.client !== undefined && UserService.client !== null);
   }
 }

@@ -1,21 +1,15 @@
 package com.revaturesocialmedia.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revaturesocialmedia.beans.Client;
@@ -23,6 +17,7 @@ import com.revaturesocialmedia.beans.Employee;
 import com.revaturesocialmedia.beans.Instructor;
 import com.revaturesocialmedia.beans.User;
 import com.revaturesocialmedia.services.LoginService;
+
 
 
 @RestController
@@ -37,6 +32,7 @@ public class LoginController {
 	public String goLogin(HttpSession session) throws JsonProcessingException {
 		System.out.println("get: login");
 		if(session.getAttribute("user") !=null) {
+			System.out.println(session.getAttribute("user"));
 			return om.writeValueAsString(session.getAttribute("user"));
 		}
 		return null;
