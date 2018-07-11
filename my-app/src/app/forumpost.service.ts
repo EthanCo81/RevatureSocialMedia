@@ -11,7 +11,7 @@ import { ForumPost } from './forum-post';
 })
 export class ForumpostService {
   
-  private appUrl = 'http://localhost:8080/createpost';
+  private appUrl = 'http://localhost:8080/RevatureSocial/createpost';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
@@ -44,6 +44,5 @@ export class ForumpostService {
         );
     }
   }
-
 
 }

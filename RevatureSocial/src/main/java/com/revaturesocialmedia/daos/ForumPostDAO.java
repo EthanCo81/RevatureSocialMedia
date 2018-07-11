@@ -24,5 +24,8 @@ public interface ForumPostDAO {
 		
 		//DELETE
 		void delete(ForumPost fp);
+		
+//		//submitting question
+//		void submitQuestion(ForumPost fp);
 
 }

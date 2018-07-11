@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
+import com.revaturesocialmedia.beans.Employee;
 import com.revaturesocialmedia.beans.ForumPost;
 import com.revaturesocialmedia.util.HibernateUtil;
 
@@ -119,9 +121,7 @@ public class ForumPostManager implements ForumPostDAO{
 		Transaction tx = s.beginTransaction();
 		s.delete(fp);
 		tx.commit();
-		s.close();
-
-		
+		s.close();	
 	}
 
 }

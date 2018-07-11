@@ -3,6 +3,7 @@ export class ForumPost {
     nameOfPoster: string;
     datePosted: string;
     questionTitle: string;
+    relevantLanguages: string;
     relevantTechnologies: string;
     description: string;
     likes: string;
