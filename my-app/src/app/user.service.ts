@@ -21,13 +21,13 @@ export class UserService {
   private client: Client;
 
   constructor(private http: HttpClient) { 
-    // this.client = new Client();
-    // this.client.firstname = "Chris";
-    // this.client.username = "crobins";
-    // this.client.lastname = "Robins";
-    // this.client.id = 2523;
-    // this.client.password = "pooh";
-    // this.client.company = "Bank";
+    this.client = new Client();
+    this.client.firstname = "Chris";
+    this.client.username = "crobins";
+    this.client.lastname = "Robins";
+    this.client.id = 2523;
+    this.client.password = "pooh";
+    this.client.company = "Bank";
   }
 
   login(username: string, password: string): Observable<User> {
