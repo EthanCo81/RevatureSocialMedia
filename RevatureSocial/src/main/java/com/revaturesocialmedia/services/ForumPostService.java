@@ -22,7 +22,6 @@ public class ForumPostService {
 		fp.setRelevantTechnologies(relevantTechnologies);
 		fp.setDescription(description);
 		fp.setLikes(likes);
-		fp.setComments(comments);
 		
 //		fp = fpDaoInst.submitQuestion(fp);
 //		if(u==null) u = instructorDaoInst.login(username, password);

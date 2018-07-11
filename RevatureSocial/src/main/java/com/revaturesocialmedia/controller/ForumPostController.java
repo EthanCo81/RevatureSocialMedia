@@ -31,4 +31,5 @@ public class ForumPostController {
 		fpService.updateForumPost(fp);
 		return fp;
 	}
+	
 }
