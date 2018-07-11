@@ -1,5 +1,5 @@
-<div class="col-lg-12 row"><H1>PROFILE</H1></div>
-
+<div align="center" class="col-lg-12 row"><H1>PROFILE</H1></div>
+<!--
 <div class="container border" *ngIf="employee">
   <div class="row">
     <div class="col-sm border card">
@@ -8,6 +8,9 @@
     </div>
     <div class="col">
       <div class="row">
+        <div class="col-sm-3">
+        <img *ngIf="employee.picture" class="card-img-top img-responsive col" [src]="employee.picture" alt="" style="width:150px">
+        </div>
         <div class="col-sm-3">
           <label>ID: </label> {{employee.id}}
         </div>
@@ -24,7 +27,7 @@
           <label>Name:</label> {{employee.lastname}}
         </div>
       </div>
-      <button class="btn btn-primary" (click)="editEmp()">Submit</button>
+      <button class="btn btn-primary" (click)="editEmp()">Edit</button>
   </div>
 </div>
 
@@ -52,7 +55,7 @@
           <label>Last Name:</label> {{instructor.lastname}}
         </div>
       </div>
-      <button class="btn btn-primary" (click)="editIns()">Submit</button>
+      <button class="btn btn-primary" (click)="editIns()">Edit</button>
   </div>
 </div>
 </div>
@@ -80,7 +83,52 @@
           <label>Last Name:</label> {{client.lastname}}
         </div>
       </div>
-      <button class="btn btn-primary" (click)="editCln()">Submit</button>
+      <button class="btn btn-primary" (click)="editCln()">Edit</button>
   </div>
 </div>
+</div>-->
+
+<!--Employee Profile Display-->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" *ngIf="employee">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{employee.firstname}} {{employee.lastname}}</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://www.redskycapital.com/wp-content/uploads/2016/06/placeholder.png" class="img-circle img-responsive"> </div>
+            
+              <div class=" col-md-9 col-lg-9 "> 
+                <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <td>ID:</td>
+                      <td>{{employee.id}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Username:</td>
+                      <td>{{employee.username}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>About Me</td>
+                      <td>{{employee.aboutme}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Technologies</td>
+                      <td>{{employee.technologies}}</td>
+                    </tr>
+                  </tbody>
+                </table>              
+              <a class="btn btn-primary" (click)="editEmp()">Edit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

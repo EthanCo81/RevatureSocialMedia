@@ -21,6 +21,15 @@ export class UserService {
   private client: Client;
 
   constructor(private http: HttpClient) {
+    this.employee = new Employee();
+    this.employee.id = 1;
+    this.employee.username = "test";
+    this.employee.password = "pass";
+    this.employee.firstname = "testfirst";
+    this.employee.lastname = "testlast";
+    this.employee.technologies = "java";
+    this.employee.aboutme = "about_me_1";
+    this.employee.picture = null;
   }
 
   login(username: string, password: string): Observable<User> {

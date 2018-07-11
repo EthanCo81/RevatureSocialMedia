@@ -35,7 +35,10 @@ export class ProfileComponent implements OnInit {
   instructor: Instructor;
   client: Client;
   ngOnInit() {
-    // TODO: Change to recognize what type of person is logged in (employee, instructor, or client)
+    this.client = this.userService.getClient();
+    this.employee = this.userService.getEmployee();
+    this.instructor = this.userService.getInstructor();
+    
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
 
@@ -48,22 +51,7 @@ export class ProfileComponent implements OnInit {
         clns => this.client = clns);
     }
     
-    this.client = this.userService.getClient();
-    this.employee = this.userService.getEmployee();
-    this.instructor = this.userService.getInstructor();
-    // this.employee = new Employee();
-    // this.employee.firstname = "Harry";
-    // this.employee.username = "hsmith";
-    // this.employee.lastname = "Smith";
-    // this.employee.id = 2521;
-    // this.employee.password = "pass";
-    // this.instructor = new Instructor();
-    // this.instructor.firstname = "Harry";
-    // this.instructor.username = "hsmith";
-    // this.instructor.lastname = "Smith";
-    // this.instructor.id = 2521;
-    // this.instructor.password = "pass";
-    // this.client.company = "Not Revature";
+    
     console.log ('Instructor: ' + this.instructor);
     console.log ('Employee: ' + this.employee);
     console.log ('Client: ' + this.client);
@@ -79,17 +67,14 @@ export class ProfileComponent implements OnInit {
   }
 
   editEmp(): void {
-    // this.router.navigate('/profile/edit/' + this.employee.id);
     this.router.navigate(['/profile/edit', this.employee.id]);
   }
 
   editIns(): void {
-    // this.router.navigate('/profile/edit/' + this.instructor.id);
     this.router.navigate(['/profile/edit', this.instructor.id]);
   }
 
   editCln(): void {
-    // this.router.navigate('/profile/edit/' + this.client.id);
     this.router.navigate(['/profile/edit', this.client.id]);
   }
 

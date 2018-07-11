@@ -36,17 +36,18 @@ export class EditProfileComponent implements OnInit {
     public instructor: Instructor;
     public client: Client;
 
+    public id: number;
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    console.log(id);
+    this.id = +this.route.snapshot.paramMap.get('id');
+    console.log(this.id);
 
 
     this.client = this.userService.getClient();
     this.employee = this.userService.getEmployee();
     this.instructor = this.userService.getInstructor();
 
-    if (this.profileService.isEmployee()) {
-      this.employeeService.getEmp(id).subscribe(
+    /*if (this.profileService.isEmployee() && this.employee.id === this.id) {
+      this.employeeService.getEmp(this.id).subscribe(
         emp => {
           // set current employee to the emp retrieved.
           this.employee = emp;
@@ -54,19 +55,28 @@ export class EditProfileComponent implements OnInit {
       );
     }
 
-
-    if (this.profileService.isClient()) {
-      this.clientService.getClnt(id).subscribe(
+    if (this.profileService.isClient() && this.client.id === this.id) {
+      this.clientService.getClnt(this.id).subscribe(
         cln => {
-          // set current employee to the emp retrieved.
+          // set current client to the cln retrieved.
           this.client = cln;
         }
       );
     }
+
+    if (this.profileService.isInstructor() && this.instructor.id === this.id){
+      this.instructorService.getIns(this.id).subscribe(
+        ins => {
+          // set current instructor to the ins retrieved.
+          this.instructor = ins;
+        }
+      )
+    }*/
   }
 
   submit(): void {
-    if (this.profileService.isEmployee()) {
+    console.log(this.employee.id + " " + this.id);
+    if (this.profileService.isEmployee() && this.employee.id === this.id) {
       this.employeeService.updateEmp(this.employee).subscribe(
         emp => {
           this.employee = emp;
