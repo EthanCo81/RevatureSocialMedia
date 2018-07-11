@@ -23,14 +23,15 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.loggedUser = null;
-    this.userService.login(this.username, this.password).subscribe(x => {this.loggedUser = x; });
-    console.log(this.loggedUser);
+    this.userService.login(this.username, this.password).subscribe(x => {this.loggedUser = x;
+    console.log(x);
     if (this.loggedUser !== undefined) {
       this.router.navigate(['./homepage']);
     } else {
       this.router.navigate(['./login']);
-    }
+    }});
+    console.log(this.loggedUser);
+
   }
 
   logout(): void {

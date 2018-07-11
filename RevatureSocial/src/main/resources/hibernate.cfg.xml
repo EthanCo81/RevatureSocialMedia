@@ -16,11 +16,12 @@
 		
 		<!-- Backwards compatibility for id generation -->
 		<property name="hibernate.id.new_generator_mappings">false</property>
-		<property name="hibernate.hbm2ddl.auto">validate</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 		
 		<!-- Annotation -->
 		<mapping class="com.revaturesocialmedia.beans.Employee"/>
 		<mapping class="com.revaturesocialmedia.beans.Instructor"/>
 		<mapping class="com.revaturesocialmedia.beans.Client"/>
+		<mapping class="com.revaturesocialmedia.beans.Answer"/>
 	</session-factory>
 </hibernate-configuration>

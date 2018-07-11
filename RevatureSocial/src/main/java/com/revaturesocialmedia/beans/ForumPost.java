@@ -1,10 +1,16 @@
 package com.revaturesocialmedia.beans;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -13,8 +19,8 @@ import javax.persistence.Table;
 public class ForumPost implements User{
 	@Id
 	@Column(name="id_number")
-	@SequenceGenerator(name="id_seq", sequenceName = "user_id_seq", initialValue = 100001, allocationSize = 899999)
-	@GeneratedValue(generator="id_seq", strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="answer_id_seq", sequenceName = "ans_id_seq", initialValue = 1000001, allocationSize = 899999)
+	@GeneratedValue(generator="answer_id_seq", strategy=GenerationType.AUTO)
 	private int id;
 	@Column(name = "name_of_poster")
 	private String nameOfPoster;
@@ -30,8 +36,10 @@ public class ForumPost implements User{
 	private String description;
 	@Column(name = "likes")
 	private String likes;
-	@Column(name = "comments")
-	private String comments;
+	
+	@OneToMany(fetch=FetchType.EAGER)
+	@Column(name = "answers")
+	private Set<Answer> answers;
 	
 	public ForumPost() {
 		super();
@@ -77,13 +85,7 @@ public class ForumPost implements User{
 		this.likes = likes;
 	}
 
-	public String getComments() {
-		return comments;
-	}
 
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
 
 	public String getQuestionTitle() {
 		return questionTitle;

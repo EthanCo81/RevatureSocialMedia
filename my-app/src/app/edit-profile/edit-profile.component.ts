@@ -37,23 +37,13 @@ export class EditProfileComponent implements OnInit {
     public client: Client;
 
   ngOnInit(): void {
-    
-    console.log("Hello from edit-profile's oninit()")
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
 
-    
 
     this.client = this.userService.getClient();
     this.employee = this.userService.getEmployee();
     this.instructor = this.userService.getInstructor();
-
-    // this.employee = new Employee();
-    // this.employee.firstname = "Harry";
-    // this.employee.username = "hsmith";
-    // this.employee.lastname = "Smith";
-    // this.employee.id = 2521;
-    // this.employee.password = "pass";
 
     if (this.profileService.isEmployee()) {
       this.employeeService.getEmp(id).subscribe(
@@ -64,14 +54,6 @@ export class EditProfileComponent implements OnInit {
       );
     }
 
-    // if (this.profileService.isInstructor()) {
-    //   this.instructorService.getIns(id).subscribe(
-    //     ins => {
-    //       // set current employee to the emp retrieved.
-    //       this.instructor = ins;
-    //     }
-    //   );
-    // }
 
     if (this.profileService.isClient()) {
       this.clientService.getClnt(id).subscribe(
