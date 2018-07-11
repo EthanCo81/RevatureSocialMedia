@@ -9,40 +9,41 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 
+
 export class LoginComponent implements OnInit {
+  private static loggedUser: User;
   private username: string;
   private password: string;
-  private loggedUser: User;
   constructor(
     private userService: UserService,
     private router: Router
   ) { }
 
+  static getLoggedUser(): User {
+    return LoginComponent.loggedUser;
+  }
 
   ngOnInit() {
   }
 
   login(): void {
-    this.userService.login(this.username, this.password).subscribe(x => {this.loggedUser = x;
+    this.userService.login(this.username, this.password).subscribe(x => {LoginComponent.loggedUser = x;
     console.log(x);
-    if (this.loggedUser !== undefined) {
+    if (LoginComponent.loggedUser !== undefined) {
       this.router.navigate(['./homepage']);
     } else {
       this.router.navigate(['./login']);
     }});
-    console.log(this.loggedUser);
-
+    console.log(LoginComponent.loggedUser);
   }
 
   logout(): void {
     this.userService.logout().subscribe();
-    this.loggedUser = null;
+    LoginComponent.loggedUser = null;
     this.username = null;
     this.password = null;
   }
 
-  getLoggedUser(): User {
-    return this.loggedUser;
-  }
+
 
 }
