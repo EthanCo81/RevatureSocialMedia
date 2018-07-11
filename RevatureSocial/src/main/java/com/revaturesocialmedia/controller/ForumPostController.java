@@ -26,7 +26,7 @@ public class ForumPostController {
 	@Autowired
 	private ForumPostService fpService;
 
-	@RequestMapping(value="/createpost", method=RequestMethod.POST)
+	@RequestMapping(value="/createpost/{id}", method=RequestMethod.POST)
 	public @ResponseBody ForumPost submitForumPost(@PathVariable("id") int id, HttpServletRequest request, @RequestBody ForumPost fp) {
 		fpService.updateForumPost(fp);
 		return fp;

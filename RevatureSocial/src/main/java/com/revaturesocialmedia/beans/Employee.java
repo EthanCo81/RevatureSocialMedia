@@ -69,6 +69,23 @@ public class Employee implements User{
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Employee [id=");
+		builder.append(id);
+		builder.append(", username=");
+		builder.append(username);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", firstname=");
+		builder.append(firstname);
+		builder.append(", lastname=");
+		builder.append(lastname);
+		builder.append("]");
+		return builder.toString();
+	}
 	
 	
 	

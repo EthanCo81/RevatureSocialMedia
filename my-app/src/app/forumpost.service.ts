@@ -36,13 +36,15 @@ export class ForumpostService {
         { headers: this.headers, withCredentials: true }).pipe(
         map(resp => resp as ForumPost)
       );
-    } else {
-      // create a new forumpost (post)
-      return this.http.post(this.appUrl, body,
-        { headers: this.headers, withCredentials: true }).pipe(
-          map(resp => resp as ForumPost)
-        );
-    }
+    } 
   }
-
+  createForumPost(forumPost: ForumPost): Observable<ForumPost> {
+    // create a new forumpost (post)
+    const body = JSON.stringify(forumPost);
+    const url = this.appUrl + '/' + forumPost.id;
+    return this.http.post(url, body,
+      { headers: this.headers, withCredentials: true }).pipe(
+        map(resp => resp as ForumPost)
+      );
+  }
 }

@@ -42,7 +42,7 @@ export class CreatepostComponent implements OnInit {
     this.forumPost.comments = "testComment";
 
 
-      this.forumpostService.updateForumPost(this.forumPost).subscribe(
+      this.forumpostService.createForumPost(this.forumPost).subscribe(
 
         fp => {
 

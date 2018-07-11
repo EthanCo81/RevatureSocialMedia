@@ -11,10 +11,15 @@ import { Employee } from './employee';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private appUrl = 'http://localhost:8080/RevatureSocial/employee';
+  private appUrl = 'http://localhost:8080/RevatureSocial/employee_profile';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
+  employee: Employee;
+
+  setEmployee(emp: Employee){
+    this.employee = emp;
+  }
 
   getEmps(): Observable<Employee[]> {
     return this.http.get(this.appUrl, { withCredentials: true }).pipe(
@@ -31,9 +36,11 @@ export class EmployeeService {
 
   updateEmp(employee: Employee): Observable<Employee> {
     const body = JSON.stringify(employee);
+    console.log("Employee Service: " + body);
     if (employee.id) {
       // update a specific employee (put request)
       const url = this.appUrl + '/' + employee.id;
+      this.setEmployee(employee);
       return this.http.put(url, body,
         { headers: this.headers, withCredentials: true }).pipe(
         map(resp => resp as Employee)
@@ -41,10 +48,10 @@ export class EmployeeService {
     }
   }
 
-  // getEmployee(): Employee {
-  //   return this.employee;
-  // }
-  // isEmployee() {
-  //   return (this.employee !== undefined && this.employee !== null);
-  // }
+  getEmployee(): Employee {
+    return this.employee;
+  }
+  isEmployee() {
+    return (this.employee !== undefined && this.employee !== null);
+  }
 }
