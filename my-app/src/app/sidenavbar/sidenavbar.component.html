@@ -14,12 +14,12 @@
     </div>
     <div class="navi">
         <ul>
-            <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-            <li><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm" (on-click)='viewProfile()'>View Profile</span></a></li>
-            <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm" (on-click)='editProfile()'>Edit Profile</span></a></li>
-            <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Learning aids</span></a></li>
-            <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Users</span></a></li>
-            <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calendar</span></a></li>
+            <li class="active"  (click)='this.hp.setToForum()'><a><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Forum</span></a></li>
+            <li (click)='this.hp.setToProfile()'><a><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm" >View Profile</span></a></li>
+            <li (click)='this.hp.setToEdit()'><a><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm" >Edit Profile</span></a></li>
+            <li><a><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Learning aids</span></a></li>
+            <li><a><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Users</span></a></li>
+            <li><a><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calendar</span></a></li>
             
         </ul>
     </div>
