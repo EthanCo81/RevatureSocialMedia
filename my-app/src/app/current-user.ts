@@ -1,7 +1,7 @@
 
-import { Client } from 'src/app/client';
-import { Employee } from 'src/app/employee';
-import { Instructor } from 'src/app/instructor';
+import { Client } from './client';
+import { Employee } from './employee';
+import { Instructor } from './instructor';
 import { InstructorService } from './instructor.service';
 
 export class CurrentUser {

@@ -3,17 +3,17 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { ProfileService } from 'src/app/profile.service';
+import { ProfileService } from '../profile.service';
 
-import { Profile } from 'src/app/profile';
-import { Employee } from 'src/app/employee';
-import { Instructor } from 'src/app/instructor';
-import { Client } from 'src/app/client';
+import { Profile } from '../profile';
+import { Employee } from '../employee';
+import { Instructor } from '../instructor';
+import { Client } from '../client';
 
-import { EmployeeService } from 'src/app/employee.service';
-import { InstructorService } from 'src/app/instructor.service';
-import { ClientService } from 'src/app/client.service';
-import { UserService } from 'src/app/user.service';
+import { EmployeeService } from '../employee.service';
+import { InstructorService } from '../instructor.service';
+import { ClientService } from '../client.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-edit-profile',

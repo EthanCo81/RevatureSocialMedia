@@ -1,0 +1,44 @@
+<div class="position-relative container">
+
+    <div class="row justify-content-center">
+        <div class="card mt-sm-3 col-md-8">
+            <div class="card-body">
+                <h3 class="mb-0">Search</h3>
+                <div clsas="form-group">
+                    
+                    <input class="form-control mt-2" type="text"
+                    [(ngModel)]="query"
+                    (keyup.enter)="updateQuery(query)">
+
+                </div><!-- form-group -->
+            </div><!-- card-body -->
+        </div><!-- card -->
+    </div><!-- row -->
+
+    <div class="position-absolute container" style="left: 0; z-index:10">
+        <div class="row justify-content-center">
+            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5">
+                <div class="list-group">
+                    <div class="list-group-item list-group-item-action flex-column align-items-start"
+                        *ngFor="let employee of employees"
+                        (mouseover)="selectEmployee(employee)"
+                        (click)="moveToProfile(employee)">
+                        <div class="media">
+                            <img class="mr-3 rounded align-self-center img-fluid"
+                                style="width:70px;" src="{{ employee.picture }}"
+                                alt="{{ employee.firstname }}">
+                            <div class="media-body align-self-center">
+                                <h5 class="m-0">Name: {{ employee.firstname }} {{ employee.lastname }}</h5>
+                                <ul>
+                                    <li>Username: {{ employee.username }}</li>
+                                    <li>Technologies: {{ employee.technologies }}</li>
+                                </ul>
+                            </div><!-- media body -->
+                        </div><!-- media -->
+                    </div><!-- list-group-item list-group-item-action flex-column align-items-start -->
+                </div><!-- list-group -->
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- container -->
+
+</div><!--- position -->

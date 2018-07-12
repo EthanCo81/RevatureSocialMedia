@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EditProfileComponent } from 'src/app/edit-profile/edit-profile.component';
+import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { UserService } from '../user.service';

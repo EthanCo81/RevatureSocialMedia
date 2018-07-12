@@ -1,6 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { UserService } from 'src/app/user.service';
-import { User } from 'src/app/User';
+import { UserService } from '../user.service';
+import { User } from '../user';
 import { Router } from '@angular/router';
 
 @Component({
