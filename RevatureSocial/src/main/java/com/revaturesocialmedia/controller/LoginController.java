@@ -73,6 +73,12 @@ public class LoginController {
 		}
 		
 	}
+	@CrossOrigin(origins="http://localhost:4200")
+	@RequestMapping(value = "/login", method=RequestMethod.DELETE)
+	public void logout(HttpSession session) {
+		session.invalidate();
+	}
+
 	
 	public LoginService getLogin() {
 		return login;

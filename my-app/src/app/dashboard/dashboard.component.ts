@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ForumPost } from '../forum-post';
+import { ForumpostComponent } from 'src/app/forumpost/forumpost.component';
 
 @Component({
   selector: 'app-dashboard',

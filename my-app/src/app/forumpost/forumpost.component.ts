@@ -11,14 +11,6 @@ import { Location } from '@angular/common';
 })
 export class ForumpostComponent implements OnInit {
   public forumPost: ForumPost;
-  // private nameOfPoster: string;
-  // private datePosted: string;
-  // private questionTitle: string;
-  // private relevantLanguages: string;
-  // private relevantTechnologies: string;
-  // private description: string;
-  // private likes: string;
-  // private comments: string;
 
   constructor(
     private forumPostService: ForumpostService,
@@ -29,6 +21,7 @@ export class ForumpostComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('Fourmpost init');
     this.forumPostService.getForumPosts().subscribe(f => {this.forums = f;
       console.log(f);
       console.log(this.forums);
