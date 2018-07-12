@@ -19,10 +19,13 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) { }
 
-  static getLoggedUser(): User {
-    return LoginComponent.loggedUser;
+  logout(): void {
+    // this.userService.logout().subscribe();
+    LoginComponent.loggedUser = null;
+    this.username = null;
+    this.password = null;
+    this.router.navigate(['./login']);
   }
-
   ngOnInit() {
   }
 
@@ -37,12 +40,6 @@ export class LoginComponent implements OnInit {
     console.log(LoginComponent.loggedUser);
   }
 
-  logout(): void {
-    this.userService.logout().subscribe();
-    LoginComponent.loggedUser = null;
-    this.username = null;
-    this.password = null;
-  }
 
 
 
