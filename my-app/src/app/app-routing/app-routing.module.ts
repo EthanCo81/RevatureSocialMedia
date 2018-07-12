@@ -8,6 +8,7 @@ import {DashboardComponent} from '../dashboard/dashboard.component';
 import {SidenavbarComponent} from '../sidenavbar/sidenavbar.component';
 import {TopsearchbarComponent} from '../topsearchbar/topsearchbar.component';
 import {CreatepostComponent} from '../createpost/createpost.component';
+import {SearchComponent} from '../search/search.component';
 
 const routes = [
   {
@@ -43,6 +44,10 @@ const routes = [
   {
     path: 'createpost',
     component: CreatepostComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   }
 
 ];

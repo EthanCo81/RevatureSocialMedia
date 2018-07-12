@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ForumPost } from 'src/app/forum-post';
+import { ForumPost } from '../forum-post';
 
 @Component({
   selector: 'app-createpost',
@@ -17,7 +17,7 @@ export class CreatepostComponent implements OnInit {
     private relevantTechnologies: string,
     private description: string,
     private likes: string,
-    private comments: string  
+    private comments: string
   ) { }
 
 
@@ -26,9 +26,9 @@ export class CreatepostComponent implements OnInit {
 
   }
 
-  submitQuestion(): void{
-    //create questionService and link with backend DAOs
-    //then submit the given fields
+  submitQuestion(): void {
+    // create questionService and link with backend DAOs
+    // then submit the given fields
 
   }
 

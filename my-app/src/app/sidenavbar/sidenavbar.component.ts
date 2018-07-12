@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomepageComponent } from 'src/app/homepage/homepage.component';
+import { HomepageComponent } from '../homepage/homepage.component';
 
 @Component({
   providers: [HomepageComponent],

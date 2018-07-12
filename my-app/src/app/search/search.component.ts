@@ -5,11 +5,11 @@ import { Employee } from '../employee';
 import { SearchService } from '../search.service';
 
 @Component({
-  selector: 'app-searchresult',
-  templateUrl: './searchresult.component.html',
-  styleUrls: ['./searchresult.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class SearchresultComponent implements OnInit {
+export class SearchComponent implements OnInit {
     public query: string;
     public employees: Employee[];
     public currentEmployee: object;

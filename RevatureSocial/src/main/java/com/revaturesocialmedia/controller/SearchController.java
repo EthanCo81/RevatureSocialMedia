@@ -25,7 +25,7 @@ public class SearchController {
 	@Autowired
 	private EmployeeDAO em;
 	
-	@RequestMapping(value="/employee_search", method=RequestMethod.GET)
+	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public List<Employee> getAll() {
 		log.debug("Fetching employees from server.");
 		List<Employee> employees = em.getAllHQL();
@@ -35,15 +35,19 @@ public class SearchController {
 		return employees;
 	}
 	
-	@RequestMapping(value="/employee_search/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/search/{id}", method=RequestMethod.GET)
 	public Employee getEmployeeById(@PathVariable("id") int id) {
-		System.out.println("Employee Profile Getter");
-		return em.getById(id);
+		log.debug("Fetch employee by ID");
+		Employee e = em.getById(id);
+		log.debug(e);
+		return e;
 	}
 	
-	@RequestMapping(value="/employee_search/keyword={key}", method=RequestMethod.GET)
+	@RequestMapping(value="/search/keyword={key}", method=RequestMethod.GET)
 	public List<Employee> getEmployeesByKeyword(@PathVariable("key") String key) {
-		System.out.println("Employee Profile Getter");
-		return em.getByKeyword(key);
+		log.debug("Fetch employee list by keyword");
+		List<Employee> employees = em.getByKeyword(key);
+		log.debug(employees);
+		return employees;
 	}
 }

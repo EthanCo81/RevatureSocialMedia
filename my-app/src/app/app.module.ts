@@ -14,6 +14,7 @@ import { ForumpostComponent } from './forumpost/forumpost.component';
 import { SidenavbarComponent } from './sidenavbar/sidenavbar.component';
 import { TopsearchbarComponent } from './topsearchbar/topsearchbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     ForumpostComponent,
     SidenavbarComponent,
     TopsearchbarComponent,
-    HomepageComponent
+    HomepageComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

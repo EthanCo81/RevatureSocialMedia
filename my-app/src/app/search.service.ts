@@ -11,7 +11,7 @@ import { Employee } from './employee';
   providedIn: 'root'
 })
 export class SearchService {
-  private appUrl = 'http://localhost:8080/RevatureSocial/employee_search';
+  private appUrl = 'http://localhost:8080/RevatureSocial/search';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
