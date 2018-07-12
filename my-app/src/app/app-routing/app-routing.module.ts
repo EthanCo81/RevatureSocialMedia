@@ -8,6 +8,7 @@ import {DashboardComponent} from '../dashboard/dashboard.component';
 import {SidenavbarComponent} from '../sidenavbar/sidenavbar.component';
 import {TopsearchbarComponent} from '../topsearchbar/topsearchbar.component';
 import {CreatepostComponent} from '../createpost/createpost.component';
+import { ErrorComponent } from '../error/error.component';
 
 const routes = [
   {
@@ -47,6 +48,14 @@ const routes = [
   {
     path: 'createpost',
     component: CreatepostComponent
+  },
+  {
+    path: 'error',
+    component: ErrorComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/error'
   }
 
 ];
