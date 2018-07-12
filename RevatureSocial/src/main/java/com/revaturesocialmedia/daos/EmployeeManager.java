@@ -2,12 +2,17 @@ package com.revaturesocialmedia.daos;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
-import com.revaturesocialmedia.beans.Client;
 import com.revaturesocialmedia.beans.Employee;
 import com.revaturesocialmedia.util.HibernateUtil;
 
@@ -53,7 +58,7 @@ public class EmployeeManager implements EmployeeDAO{
 		try {
 			tx = session.beginTransaction();
 			session.persist(emp);
-			System.out.println("successful persist");
+			System.out.println("successful persist");	// stahap. use log4j.
 			tx.commit();
 			
 			return emp;
@@ -69,14 +74,51 @@ public class EmployeeManager implements EmployeeDAO{
 
 	@Override
 	public List<Employee> getAllHQL() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = hu.getSession();
+		Query<Employee> query = session.createQuery("from Employee");
+		List<Employee> employees = query.list();
+		
+		return employees;
+	}
+	
+	@Override
+	public List<Employee> getByKeyword(String s) {
+		Session session = hu.getSession();
+		String hql = "select e from Employee e where e.firstname is :keyword OR e.lastname is :keyword";
+		Query<Employee> query = session.createQuery(hql);
+		query.setParameter("keyword", s);
+		List<Employee> employees = query.list();
+		
+		return employees;
+	}
+	
+	@Override
+	public List<Employee> getByKeywordCriteria(String s) {
+		
+		String hql = "select e from Employee e where e.firstname is :keyword OR e.lastname is :keyword";
+		
+		Session session = hu.getSession();
+		
+		CriteriaBuilder cb = session.getCriteriaBuilder();
+		CriteriaQuery<Employee> criteria = cb.createQuery(Employee.class);
+		Root<Employee> employeeRoot = criteria.from(Employee.class);
+		Predicate cond = cb.or(cb.equal(employeeRoot.get("firstname"), s), cb.equal(employeeRoot.get("lastname"), s));
+		criteria.where(cond);			
+				
+		List<Employee> employees = session.createQuery(criteria).getResultList();
+		
+		return employees;
 	}
 
 	@Override
 	public List<Employee> getAllCriteria() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = hu.getSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Employee> criteria = builder.createQuery(Employee.class);
+		criteria.from(Employee.class);
+		List<Employee> employees = session.createQuery(criteria).getResultList();
+		
+		return employees;
 	}
 
 	@Override
@@ -123,7 +165,6 @@ public class EmployeeManager implements EmployeeDAO{
 	@Override
 	public void updateHQL() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

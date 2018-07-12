@@ -24,10 +24,15 @@ public class Instructor implements User{
 	private String firstname;
 	@Column(name = "lastname")
 	private String lastname;
+	@Column(name = "about_me")
+	private String aboutMe;
+	@Column(name = "batch")
+	private String batch;
+	@Column(name = "batch_type")
+	private String batchType;
 	
 	public Instructor() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getUsername() {
@@ -68,6 +73,53 @@ public class Instructor implements User{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getAboutMe() {
+		return aboutMe;
+	}
+
+	public void setAboutMe(String aboutMe) {
+		this.aboutMe = aboutMe;
+	}
+
+	public String getBatch() {
+		return batch;
+	}
+
+	public void setBatch(String batch) {
+		this.batch = batch;
+	}
+
+	public String getBatchType() {
+		return batchType;
+	}
+
+	public void setBatchType(String batchType) {
+		this.batchType = batchType;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Instructor [id=");
+		builder.append(id);
+		builder.append(", username=");
+		builder.append(username);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", firstname=");
+		builder.append(firstname);
+		builder.append(", lastname=");
+		builder.append(lastname);
+		builder.append(", aboutMe=");
+		builder.append(aboutMe);
+		builder.append(", batch=");
+		builder.append(batch);
+		builder.append(", batchType=");
+		builder.append(batchType);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 }
