@@ -46,36 +46,20 @@ export class EditProfileComponent implements OnInit {
     this.employee = this.userService.getEmployee();
     this.instructor = this.userService.getInstructor();
 
-    /*if (this.profileService.isEmployee() && this.employee.id === this.id) {
+    //Uncomment this to view/test updating if login is not persisting.
+    /*if (this.id) {
       this.employeeService.getEmp(this.id).subscribe(
-        emp => {
-          // set current employee to the emp retrieved.
-          this.employee = emp;
-        }
-      );
-    }
-
-    if (this.profileService.isClient() && this.client.id === this.id) {
-      this.clientService.getClnt(this.id).subscribe(
-        cln => {
-          // set current client to the cln retrieved.
-          this.client = cln;
-        }
-      );
-    }
-
-    if (this.profileService.isInstructor() && this.instructor.id === this.id){
+          emp => this.employee = emp);
       this.instructorService.getIns(this.id).subscribe(
-        ins => {
-          // set current instructor to the ins retrieved.
-          this.instructor = ins;
-        }
-      )
+        ins => this.instructor = ins);
+      this.clientService.getClnt(this.id).subscribe(
+        clns => this.client = clns);
     }*/
+    
   }
 
   submit(): void {
-    console.log(this.employee.id + " " + this.id);
+    //NOTE: Until login persists, this if statement will fail.
     if (this.profileService.isEmployee() && this.employee.id === this.id) {
       this.employeeService.updateEmp(this.employee).subscribe(
         emp => {
@@ -86,6 +70,7 @@ export class EditProfileComponent implements OnInit {
       console.log(this.employee);
     }
 
+    //NOTE: Until login persists, this if statement will fail.
     if (this.profileService.isInstructor()) {
       this.instructorService.updateins(this.instructor).subscribe(
         ins => {
@@ -96,6 +81,7 @@ export class EditProfileComponent implements OnInit {
       console.log(this.instructor);
     }
 
+    //NOTE: Until login persists, this if statement will fail.
     if (this.profileService.isClient()) {
       this.clientService.updateClnt(this.client).subscribe(
         cln => {
