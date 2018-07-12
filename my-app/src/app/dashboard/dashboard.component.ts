@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ForumPost } from '../forum-post';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,5 +12,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
 
 }

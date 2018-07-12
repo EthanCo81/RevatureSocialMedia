@@ -19,7 +19,7 @@ export class CreatepostComponent implements OnInit {
   private relevantTechnologies: string;
   private description: string;
   private likes: string;
-  private comments: string;  
+  private comments: string;
   constructor(
     private forumpostService: ForumpostService,
     private router: Router
@@ -29,17 +29,17 @@ export class CreatepostComponent implements OnInit {
 
   }
 
-  submitQuestion(): void{
+  submitQuestion(): void {
     this.forumPost = new ForumPost();
     this.forumPost.id = 69;
-    this.forumPost.nameOfPoster = "testPoster";
-    this.forumPost.datePosted = "testDate";
+    this.forumPost.nameOfPoster = 'testPoster';
+    this.forumPost.datePosted = 'testDate';
     this.forumPost.questionTitle = this.questionTitle;
     this.forumPost.relevantLanguages = this.relevantLanguages;
     this.forumPost.relevantTechnologies = this.relevantTechnologies;
     this.forumPost.description = this.description;
-    this.forumPost.likes = "testLikes"
-    this.forumPost.comments = "testComment";
+    this.forumPost.likes = 'testLikes';
+    this.forumPost.comments = 'testComment';
 
 
       this.forumpostService.createForumPost(this.forumPost).subscribe(
@@ -56,8 +56,8 @@ export class CreatepostComponent implements OnInit {
 
       console.log(this.forumPost);
 
-    //create questionService and link with backend DAOs
-    //then submit the given fields
+    // create questionService and link with backend DAOs
+    // then submit the given fields
 
 }
 }

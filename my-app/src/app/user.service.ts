@@ -27,7 +27,6 @@ export class UserService {
 
   login(username: string, password: string): Observable<User> {
     if (username && password) {
-      // we need to log in
       console.log(username);
 
       const trial =  new User;

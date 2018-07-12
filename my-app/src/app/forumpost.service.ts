@@ -10,12 +10,12 @@ import { ForumPost } from './forum-post';
   providedIn: 'root'
 })
 export class ForumpostService {
-  
+
   private appUrl = 'http://localhost:8080/RevatureSocial/createpost';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
-  
+
   getForumPosts(): Observable<ForumPost[]> {
     return this.http.get(this.appUrl, { withCredentials: true }).pipe(
       map( resp => resp as ForumPost[])
@@ -24,8 +24,7 @@ export class ForumpostService {
   getForumPost(id: number): Observable<ForumPost> {
     const url: string = this.appUrl + '/' + id;
     return this.http.get(url, {withCredentials: true }).pipe(
-      map(resp => resp as ForumPost)
-    );
+      map(resp => resp as ForumPost));
   }
   updateForumPost(forumPost: ForumPost): Observable<ForumPost> {
     const body = JSON.stringify(forumPost);
@@ -36,7 +35,7 @@ export class ForumpostService {
         { headers: this.headers, withCredentials: true }).pipe(
         map(resp => resp as ForumPost)
       );
-    } 
+    }
   }
   createForumPost(forumPost: ForumPost): Observable<ForumPost> {
     // create a new forumpost (post)

@@ -18,16 +18,21 @@ export class ForumpostComponent implements OnInit {
   // private relevantTechnologies: string;
   // private description: string;
   // private likes: string;
-  // private comments: string;  
+  // private comments: string;
 
   constructor(
     private forumPostService: ForumpostService,
     private route: ActivatedRoute,
-    private router: Router, 
-    private location: Location
+    private router: Router,
+    private location: Location,
+    private forums: ForumPost[]
   ) { }
 
   ngOnInit() {
+    this.forumPostService.getForumPosts().subscribe(f => {this.forums = f;
+      console.log(f);
+      console.log(this.forums);
+    });
   }
 
 
