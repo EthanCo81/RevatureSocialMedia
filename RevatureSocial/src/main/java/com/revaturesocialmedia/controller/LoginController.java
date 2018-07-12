@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revaturesocialmedia.beans.Client;
@@ -32,7 +31,16 @@ public class LoginController {
 	public String goLogin(HttpSession session) throws JsonProcessingException {
 		System.out.println("get: login");
 		if(session.getAttribute("user") !=null) {
-			System.out.println(session.getAttribute("user"));
+			User u = (User) session.getAttribute("user");
+			if(u instanceof Employee) {
+				return "{\"employee\": "+om.writeValueAsString(session.getAttribute("user"))+"}";
+			}
+			if(u instanceof Client) {
+				return "{\"client\": "+om.writeValueAsString(session.getAttribute("user"))+"}";
+			}
+			if(u instanceof Instructor) {
+				return "{\"instructor\": "+om.writeValueAsString(session.getAttribute("user"))+"}";
+			}
 			return om.writeValueAsString(session.getAttribute("user"));
 		}
 		return null;
@@ -40,7 +48,10 @@ public class LoginController {
 	@CrossOrigin(origins="http://localhost:4200")
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(@RequestBody() UserPass up, HttpSession session) throws JsonProcessingException{	
-		
+		if(up.username ==null &&up.password ==null) {
+			session.invalidate();
+			return null;
+		}
 		System.out.println(up.username+" "+up.password);
 		User u = login.login(up.username, up.password);
 		System.out.println(up.username+" "+up.password+" "+ u);
@@ -61,9 +72,6 @@ public class LoginController {
 		}
 		
 	}
-	
-	
-	
 	
 	public LoginService getLogin() {
 		return login;

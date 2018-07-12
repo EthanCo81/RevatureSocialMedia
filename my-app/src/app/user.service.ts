@@ -67,6 +67,28 @@ export class UserService {
         ));
     }
   }
+  loginCheck(): User {
+    console.log(UserService.employee);
+    this.http.get(this.appUrl + 'login', { withCredentials: true })
+        .pipe(map(
+          resp => {
+            let curuser: CurrentUser = resp as CurrentUser;
+            console.log('User: ' + curuser.employee);
+            if (curuser) {
+              UserService.employee = curuser.employee;
+              console.log(UserService.employee);
+              console.log(curuser.employee);
+              UserService.client = curuser.client;
+              UserService.instructor = curuser.instructor;
+            }
+            curuser = null;
+          }
+        ));
+        return (UserService.employee != null) ? UserService.employee :
+        (UserService.client != null) ? UserService.client : UserService.instructor;
+    }
+
+
   logout(): Observable<Object> {
     return this.http.delete(this.appUrl + 'login', { withCredentials: true }).pipe(
       map(success => {

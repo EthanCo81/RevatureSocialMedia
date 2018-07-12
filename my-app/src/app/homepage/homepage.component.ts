@@ -22,9 +22,9 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
     this.setToForum();
-    this.us.login(null, null).subscribe(x => {this.curUser = x;
-      console.log(x);
-      });
+    if (!this.us.isEmployee() && !this.us.isInstructor() && !this.us.isClient()) {
+      this.router.navigate(['./login']);
+    }
     }
 
   public setToProfile() {
