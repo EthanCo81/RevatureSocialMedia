@@ -21,11 +21,10 @@ import { UserService } from 'src/app/user.service';
 export class ProfileComponent implements OnInit {
   @Input() profile: Profile;
   constructor(
-    private profileService: ProfileService,
-    private employeeService: EmployeeService,
-    private instructorService: InstructorService,
-    private clientService: ClientService,
-    private userService: UserService,
+    private ps: ProfileService,
+    // private employeeService: EmployeeService,
+    // private instructorService: InstructorService,
+    // private clientService: ClientService,
     private route: ActivatedRoute,
     private router: Router,
     private location: Location) {
@@ -35,35 +34,28 @@ export class ProfileComponent implements OnInit {
   instructor: Instructor;
   client: Client;
   ngOnInit() {
-    this.client = this.userService.getClient();
-    this.employee = this.userService.getEmployee();
-    this.instructor = this.userService.getInstructor();
-    
+    // TODO: Change to recognize what type of person is logged in (employee, instructor, or client)
     const id = +this.route.snapshot.paramMap.get('id');
-    console.log(id);
-
-    if (id) {
-      this.employeeService.getEmp(id).subscribe(
-          emp => this.employee = emp);
-      this.instructorService.getIns(id).subscribe(
-        ins => this.instructor = ins);
-      this.clientService.getClnt(id).subscribe(
-        clns => this.client = clns);
+    this.ps.setUser();
+    if (this.isClient()) {
+      this.client = this.ps.userService.getClient();
+    } else if (this.isEmployee()) {
+      this.employee = this.ps.userService.getEmployee();
+    } else if (this.isInstructor()) {
+      this.instructor = this.ps.userService.getInstructor();
     }
-    
-    
     console.log ('Instructor: ' + this.instructor);
     console.log ('Employee: ' + this.employee);
     console.log ('Client: ' + this.client);
   }
   isClient(): boolean {
-    return this.userService.isClient();
+    return this.ps.isClient();
   }
   isInstructor(): boolean {
-    return this.userService.isInstructor();
+    return this.ps.isInstructor();
   }
   isEmployee(): boolean {
-    return this.userService.isEmployee();
+    return this.ps.isEmployee();
   }
 
   editEmp(): void {
