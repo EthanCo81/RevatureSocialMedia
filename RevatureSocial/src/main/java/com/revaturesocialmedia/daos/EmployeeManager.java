@@ -7,7 +7,6 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
-import com.revaturesocialmedia.beans.Client;
 import com.revaturesocialmedia.beans.Employee;
 import com.revaturesocialmedia.util.HibernateUtil;
 

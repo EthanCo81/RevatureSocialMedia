@@ -1,4 +1,230 @@
-<div class="container border" *ngIf="employee">
+<div align="center" class="col-lg-12 row"><h1>EDIT PROFILE</h1></div>
+<div class="container">
+    <div class="row">
+      <!--EMPLOYEE TABLE-->
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" *ngIf="employee">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{employee.firstname}} {{employee.lastname}}</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-3 col-lg-3 " align="center">
+                <img *ngIf="employee.picture" alt="User Pic" src={{employee.picture}} class="img-circle img-responsive">
+                <img *ngIf="!employee.picture" alt="User Pic" src="http://www.redskycapital.com/wp-content/uploads/2016/06/placeholder.png" class="img-circle img-responsive">
+                <div class="form-group">
+                    <label>Upload Image</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">
+                                Browse… <input type="file" id="imgInp">
+                            </span>
+                        </span>
+                        <input type="text" class="form-control" readonly>
+                    </div>
+                    <img id='img-upload'/>
+                </div>
+              </div>
+              
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>ID:</td>
+                        <td><input type="text" [(ngModel)]="employee.id" name="id"></td>
+                      </tr>
+  
+                      <tr>
+                        <td>Username:</td>
+                        <td><input type="text" [(ngModel)]="employee.username" name="username"></td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Password:</td>
+                        <td><input type="text" [(ngModel)]="employee.password" name="password"></td>
+                      </tr>
+
+                      <tr>
+                        <td>First Name:</td>
+                        <td><input type="text" [(ngModel)]="employee.firstname" name="firstname"></td>
+                      </tr>
+
+                      <tr>
+                        <td>Last Name:</td>
+                        <td><input type="text" [(ngModel)]="employee.lastname" name="lastname"></td>
+                      </tr>
+
+                      <tr>
+                        <td>About Me</td>
+                        <td><textarea [(ngModel)]="employee.aboutMe" name="aboutMe"></textarea></td>
+                      </tr>
+  
+                      <tr>
+                        <td>Technologies</td>
+                        <td><textarea [(ngModel)]="employee.technologies" name="technologies"></textarea></td>
+                      </tr>
+                    </tbody>
+                  </table>              
+                <a class="btn btn-primary" (click)="submit()">Submit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--INSTRUCTOR TABLE-->
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" *ngIf="instructor">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">{{instructor.firstname}} {{instructor.lastname}}</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center">
+                  <img *ngIf="instructor.picture" alt="User Pic" src={{instructor.picture}} class="img-circle img-responsive">
+                  <img *ngIf="!instructor.picture" alt="User Pic" src="http://www.redskycapital.com/wp-content/uploads/2016/06/placeholder.png" class="img-circle img-responsive">
+                  <div class="form-group">
+                      <label>Upload Image</label>
+                      <div class="input-group">
+                          <span class="input-group-btn">
+                              <span class="btn btn-default btn-file">
+                                  Browse… <input type="file" id="imgInp">
+                              </span>
+                          </span>
+                          <input type="text" class="form-control" readonly>
+                      </div>
+                      <img id='img-upload'/>
+                  </div>
+                </div>
+                
+                  <div class=" col-md-9 col-lg-9 "> 
+                    <table class="table table-user-information">
+                      <tbody>
+                        <tr>
+                          <td>ID:</td>
+                          <td><input type="text" [(ngModel)]="instructor.id" name="id"></td>
+                        </tr>
+    
+                        <tr>
+                          <td>Username:</td>
+                          <td><input type="text" [(ngModel)]="instructor.username" name="username"></td>
+                        </tr>
+                        
+                        <tr>
+                          <td>Password:</td>
+                          <td><input type="text" [(ngModel)]="instructor.password" name="password"></td>
+                        </tr>
+  
+                        <tr>
+                          <td>First Name:</td>
+                          <td><input type="text" [(ngModel)]="instructor.firstname" name="firstname"></td>
+                        </tr>
+  
+                        <tr>
+                          <td>Last Name:</td>
+                          <td><input type="text" [(ngModel)]="instructor.lastname" name="lastname"></td>
+                        </tr>
+  
+                        <tr>
+                          <td>About Me</td>
+                          <td><textarea [(ngModel)]="instructor.aboutMe" name="aboutMe"></textarea></td>
+                        </tr>
+    
+                        <tr>
+                          <td>Batch</td>
+                          <td><input type="text" [(ngModel)]="instructor.batch" name="batch"></td>
+                        </tr>
+
+                        <tr>
+                          <td>Batch Type</td>
+                          <td><input type="text" [(ngModel)]="instructor.batchType" name="batchType"></td>
+                        </tr>
+                      </tbody>
+                    </table>              
+                  <a class="btn btn-primary" (click)="submit()">Submit</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!--CLIENT TABLE-->
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" *ngIf="client">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">{{client.company}}</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center">
+                  <img *ngIf="client.logo" alt="User Pic" src={{client.logo}} class="img-circle img-responsive">
+                  <img *ngIf="!client.logo" alt="User Pic" src="http://www.redskycapital.com/wp-content/uploads/2016/06/placeholder.png" class="img-circle img-responsive">
+                  <div class="form-group">
+                      <label>Upload Image</label>
+                      <div class="input-group">
+                          <span class="input-group-btn">
+                              <span class="btn btn-default btn-file">
+                                  Browse… <input type="file" id="imgInp">
+                              </span>
+                          </span>
+                          <input type="text" [(ngModel)]="client.logo" class="form-control" readonly>
+                      </div>
+                      <img id='img-upload'/>
+                  </div>
+                </div>
+                
+                  <div class=" col-md-9 col-lg-9 "> 
+                    <table class="table table-user-information">
+                      <tbody>
+                        <tr>
+                          <td>ID:</td>
+                          <td><input type="text" [(ngModel)]="client.id" name="id"></td>
+                        </tr>
+    
+                        <tr>
+                          <td>Username:</td>
+                          <td><input type="text" [(ngModel)]="client.username" name="username"></td>
+                        </tr>
+                        
+                        <tr>
+                          <td>Password:</td>
+                          <td><input type="text" [(ngModel)]="client.password" name="password"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Company Name:</td>
+                            <td><input type="text" [(ngModel)]="client.company" name="company"></td>
+                          </tr>
+  
+                        <tr>
+                          <td>Job Title:</td>
+                          <td><input type="text" [(ngModel)]="client.jobTitle" name="jobTitle"></td>
+                        </tr>
+  
+                        <tr>
+                          <td>Address:</td>
+                          <td><input type="text" [(ngModel)]="client.address" name="address"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Phone</td>
+                            <td><input type="text" [(ngModel)]="client.phone" name="phone"></td>
+                          </tr>
+  
+                        <tr>
+                          <td>Mission Statement</td>
+                          <td><textarea [(ngModel)]="client.missionStatement" name="missionStatement"></textarea></td>
+                        </tr>
+                      </tbody>
+                    </table>              
+                  <a class="btn btn-primary" (click)="submit()">Submit</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+<!--<div class="container border" *ngIf="employee">
   <form>
     <div class="row">
       <div class="col-sm">
@@ -8,7 +234,7 @@
           </div>
           <div class="col-sm-3">
             <label>Password:</label> <input type="text" [(ngModel)]="employee.password" name="password">
-          </div>          
+          </div>
         </div>
         <div class="row">
           <div class="col-sm-3">
@@ -77,4 +303,4 @@
     </div>
   </div>
   </form>
-</div>
+</div>-->
