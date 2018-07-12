@@ -60,7 +60,7 @@ export class EditProfileComponent implements OnInit {
 
   submit(): void {
     //NOTE: Until login persists, this if statement will fail.
-    if (this.profileService.isEmployee() && this.employee.id === this.id) {
+    if (this.profileService.isEmployee()) {
       this.employeeService.updateEmp(this.employee).subscribe(
         emp => {
           this.employee = emp;
