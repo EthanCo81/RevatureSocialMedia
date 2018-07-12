@@ -5,12 +5,11 @@
             <div class="card-body">
                 <h3 class="mb-0">Search</h3>
                 <div clsas="form-group">
-                    <div class="form-label"
-                        *ngIf="query">
-                        <strong>For:</strong> {{ query }}
-                    </div>
+                    
                     <input class="form-control mt-2" type="text"
-                    [(ngModel)]="query">
+                    [(ngModel)]="query"
+                    (keyup.enter)="updateQuery(query)">
+
                 </div><!-- form-group -->
             </div><!-- card-body -->
         </div><!-- card -->
@@ -19,12 +18,11 @@
     <div class="position-absolute container" style="left: 0; z-index:10">
         <div class="row justify-content-center">
             <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5">
-                <div class="list-group" *ngIf="query">
+                <div class="list-group">
                     <div class="list-group-item list-group-item-action flex-column align-items-start"
                         *ngFor="let employee of employees"
-                        (mouseover)="showEmployee(employee)"
-                        (click)="moveToProfile(employee)"
-                        [style.backgroundColor]="employee.highlight ? '#EEE' : '#FFF'">
+                        (mouseover)="selectEmployee(employee)"
+                        (click)="moveToProfile(employee)">
                         <div class="media">
                             <img class="mr-3 rounded align-self-center img-fluid"
                                 style="width:70px;" src="{{ employee.picture }}"
@@ -34,7 +32,6 @@
                                 <ul>
                                     <li>Username: {{ employee.username }}</li>
                                     <li>Technologies: {{ employee.technologies }}</li>
-                                    <li>About: {{ employee.aboutme }}</li>
                                 </ul>
                             </div><!-- media body -->
                         </div><!-- media -->

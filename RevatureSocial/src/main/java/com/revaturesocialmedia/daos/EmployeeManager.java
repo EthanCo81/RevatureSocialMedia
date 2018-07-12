@@ -84,9 +84,15 @@ public class EmployeeManager implements EmployeeDAO{
 	@Override
 	public List<Employee> getByKeyword(String s) {
 		Session session = hu.getSession();
-		String hql = "select e from Employee e where e.firstname is :keyword OR e.lastname is :keyword";
+		
+		String hql = "select e from Employee e where "
+				+ "lower(e.firstname) like :keyword "
+				+ "OR lower(e.lastname) like :keyword "
+				+ "OR lower(e.username) like :keyword "
+				+ "OR lower(e.technologies) like :keyword";
+		
 		Query<Employee> query = session.createQuery(hql);
-		query.setParameter("keyword", s);
+		query.setParameter("keyword", "%"+s.toLowerCase()+"%");
 		List<Employee> employees = query.list();
 		
 		return employees;
@@ -95,14 +101,18 @@ public class EmployeeManager implements EmployeeDAO{
 	@Override
 	public List<Employee> getByKeywordCriteria(String s) {
 		
-		String hql = "select e from Employee e where e.firstname is :keyword OR e.lastname is :keyword";
+		String hql = "select e from Employee e where "
+				+ "lower(e.firstname) like :keyword "
+				+ "OR lower(e.lastname) like :keyword "
+				+ "OR lower(e.username) like :keyword "
+				+ "OR lower(e.technologies) like :keyword";
 		
 		Session session = hu.getSession();
 		
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<Employee> criteria = cb.createQuery(Employee.class);
 		Root<Employee> employeeRoot = criteria.from(Employee.class);
-		Predicate cond = cb.or(cb.equal(employeeRoot.get("firstname"), s), cb.equal(employeeRoot.get("lastname"), s));
+		Predicate cond = cb.or(cb.equal(employeeRoot.get("firstname"), s), cb.equal(employeeRoot.get("lastname"), s.toLowerCase()));
 		criteria.where(cond);			
 				
 		List<Employee> employees = session.createQuery(criteria).getResultList();

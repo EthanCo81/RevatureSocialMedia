@@ -11,21 +11,25 @@ import { SearchService } from '../search.service';
 })
 export class SearchComponent implements OnInit {
     public query: string;
+    public selected: string;
     public employees: Employee[];
 
     constructor(private searchService: SearchService) { }
 
-    showEmployee(item) {
-        this.query = item.firstname;
-        item.highlight = !item.hightlight;
+    selectEmployee(item) {
+        this.selected = item.username;
     }
 
     moveToProfile(item) {
         window.location.assign('/profile/' + item.id);
     }
 
+    updateQuery(item) {
+        this.query = item;
+        this.searchService.getEmployeesByKeyword(item).subscribe( employees => this.employees = employees);
+    }
+
     ngOnInit() {
-        this.searchService.getAllEmployees().subscribe( employees => this.employees = employees);
         this.query = '';
     }
 }
