@@ -26,9 +26,13 @@
                         (click)="moveToProfile(employee)"
                         [style.backgroundColor]="employee.highlight ? '#EEE' : '#FFF'">
                         <div class="media">
+                            <img class="mr-3 rounded align-self-center img-fluid"
+                                style="width:70px;" src="{{ employee.picture }}"
+                                alt="{{ employee.firstname }}">
                             <div class="media-body align-self-center">
-                                <h5 class="m-0">First Name: {{ employee.firstname }}</h5>
-                                Last Name: {{ employee.lastname }}
+                                <h5 class="m-0">{{ employee.firstname }} {{ employee.lastname }}</h5>
+                                {{ employee.technologies }}
+                                {{ employee.aboutme }}
                             </div><!-- media body -->
                         </div><!-- media -->
                     </a><!-- link -->
