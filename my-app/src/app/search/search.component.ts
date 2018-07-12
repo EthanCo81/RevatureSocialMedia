@@ -12,7 +12,6 @@ import { SearchService } from '../search.service';
 export class SearchComponent implements OnInit {
     public query: string;
     public employees: Employee[];
-    public currentEmployee: object;
 
     constructor(private searchService: SearchService) { }
 
@@ -22,7 +21,7 @@ export class SearchComponent implements OnInit {
     }
 
     moveToProfile(item) {
-        this.currentEmployee = item;
+        window.location.assign('/profile/' + item.id);
     }
 
     ngOnInit() {
