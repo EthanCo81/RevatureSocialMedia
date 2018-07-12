@@ -20,14 +20,19 @@ public class Employee implements User{
 	private String username;
 	@Column(name = "pass")
 	private String password;
+	@Column(name = "picture")
+	private String picture;
 	@Column(name = "firstname")
 	private String firstname;
 	@Column(name = "lastname")
 	private String lastname;
+	@Column(name = "about_me")
+	private String aboutMe;
+	@Column(name = "technologies")
+	private String technologies;
 	
 	public Employee() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getUsername() {
@@ -70,6 +75,30 @@ public class Employee implements User{
 		this.id = id;
 	}
 
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public String getAboutMe() {
+		return aboutMe;
+	}
+
+	public void setAboutMe(String aboutMe) {
+		this.aboutMe = aboutMe;
+	}
+
+	public String getTechnologies() {
+		return technologies;
+	}
+
+	public void setTechnologies(String technologies) {
+		this.technologies = technologies;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -79,10 +108,16 @@ public class Employee implements User{
 		builder.append(username);
 		builder.append(", password=");
 		builder.append(password);
+		builder.append(", picture=");
+		builder.append(picture);
 		builder.append(", firstname=");
 		builder.append(firstname);
 		builder.append(", lastname=");
 		builder.append(lastname);
+		builder.append(", aboutMe=");
+		builder.append(aboutMe);
+		builder.append(", technologies=");
+		builder.append(technologies);
 		builder.append("]");
 		return builder.toString();
 	}

@@ -36,37 +36,31 @@ export class EditProfileComponent implements OnInit {
     public instructor: Instructor;
     public client: Client;
 
+    public id: number;
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    console.log(id);
+    this.id = +this.route.snapshot.paramMap.get('id');
+    console.log(this.id);
 
 
     this.client = this.userService.getClient();
     this.employee = this.userService.getEmployee();
     this.instructor = this.userService.getInstructor();
 
-    if (this.profileService.isEmployee()) {
-      this.employeeService.getEmp(id).subscribe(
-        emp => {
-          // set current employee to the emp retrieved.
-          this.employee = emp;
-        }
-      );
-    }
-
-
-    if (this.profileService.isClient()) {
-      this.clientService.getClnt(id).subscribe(
-        cln => {
-          // set current employee to the emp retrieved.
-          this.client = cln;
-        }
-      );
-    }
+    //Uncomment this to view/test updating if login is not persisting.
+    /*if (this.id) {
+      this.employeeService.getEmp(this.id).subscribe(
+          emp => this.employee = emp);
+      this.instructorService.getIns(this.id).subscribe(
+        ins => this.instructor = ins);
+      this.clientService.getClnt(this.id).subscribe(
+        clns => this.client = clns);
+    }*/
+    
   }
 
   submit(): void {
-    if (this.profileService.isEmployee()) {
+    //NOTE: Until login persists, this if statement will fail.
+    if (this.profileService.isEmployee() && this.employee.id === this.id) {
       this.employeeService.updateEmp(this.employee).subscribe(
         emp => {
           this.employee = emp;
@@ -76,6 +70,7 @@ export class EditProfileComponent implements OnInit {
       console.log(this.employee);
     }
 
+    //NOTE: Until login persists, this if statement will fail.
     if (this.profileService.isInstructor()) {
       this.instructorService.updateins(this.instructor).subscribe(
         ins => {
@@ -86,6 +81,7 @@ export class EditProfileComponent implements OnInit {
       console.log(this.instructor);
     }
 
+    //NOTE: Until login persists, this if statement will fail.
     if (this.profileService.isClient()) {
       this.clientService.updateClnt(this.client).subscribe(
         cln => {
