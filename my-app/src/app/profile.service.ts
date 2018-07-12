@@ -20,17 +20,19 @@ export class ProfileService {
   private appUrl = 'http://localhost:8080/RevatureSocial/profile';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-  employee: Employee;
-  instructor: Instructor;
-  client: Client;
+
 
   constructor(
     private http: HttpClient,
     private employeeService: EmployeeService,
     private instructorService: InstructorService,
     private clientService: ClientService,
-    private userService: UserService
+    public userService: UserService
   ) { }
+
+  setUser() {
+    console.log(this.userService.loginCheck());
+  }
 
   isEmployee(): boolean {
     return this.userService.isEmployee();
