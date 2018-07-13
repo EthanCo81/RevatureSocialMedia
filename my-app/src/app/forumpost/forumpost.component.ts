@@ -7,17 +7,17 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-forumpost',
   templateUrl: './forumpost.component.html',
-  styleUrls: ['./forumpost.component.css']
+  styleUrls: ['./forumpost.component.css'],
+  providers: [ForumpostService]
 })
 export class ForumpostComponent implements OnInit {
   public forumPost: ForumPost;
+  public forums: ForumPost[];
 
   constructor(
     private forumPostService: ForumpostService,
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location,
-    private forums: ForumPost[]
   ) { }
 
   ngOnInit() {
@@ -28,12 +28,11 @@ export class ForumpostComponent implements OnInit {
     });
   }
 
-
   submitQuestion(): void {
       this.forumPostService.updateForumPost(this.forumPost).subscribe(
         fp => {
           this.forumPost = fp;
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/homepage']);
         }
       );
       console.log(this.forumPost);

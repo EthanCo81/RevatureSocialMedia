@@ -3,6 +3,8 @@ import { ForumpostService } from 'src/app/forumpost.service';
 
 import { ForumPost } from 'src/app/forum-post';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-createpost',
@@ -20,26 +22,26 @@ export class CreatepostComponent implements OnInit {
   private description: string;
   private likes: string;
   private comments: string;
+  private user: User;
+
   constructor(
     private forumpostService: ForumpostService,
-    private router: Router
+    private router: Router,
+    private us: UserService
   ) { }
 
   ngOnInit() {
-
+    this.user = this.us.isEmployee() ? UserService.employee : this.us.isClient ? UserService.client : UserService.instructor;
   }
 
   submitQuestion(): void {
     this.forumPost = new ForumPost();
-    this.forumPost.id = 69;
-    this.forumPost.nameOfPoster = 'testPoster';
-    this.forumPost.datePosted = 'testDate';
+    this.forumPost.nameOfPoster = this.user.firstname + ' ' + this.user.lastname;
+    this.forumPost.datePosted = 'null';
     this.forumPost.questionTitle = this.questionTitle;
     this.forumPost.relevantLanguages = this.relevantLanguages;
     this.forumPost.relevantTechnologies = this.relevantTechnologies;
-    this.forumPost.description = this.description;
-    this.forumPost.likes = 'testLikes';
-    this.forumPost.comments = 'testComment';
+    this.forumPost.questionAsked = this.description;
 
 
       this.forumpostService.createForumPost(this.forumPost).subscribe(

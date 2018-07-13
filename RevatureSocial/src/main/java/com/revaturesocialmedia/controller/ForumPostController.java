@@ -26,9 +26,24 @@ public class ForumPostController {
 	@Autowired
 	private ForumPostService fpService;
 
-	@RequestMapping(value="/createpost/{id}", method=RequestMethod.POST)
-	public @ResponseBody ForumPost submitForumPost(@PathVariable("id") int id, HttpServletRequest request, @RequestBody ForumPost fp) {
-		fpService.updateForumPost(fp);
+	
+	@RequestMapping(value="/posts", method = RequestMethod.GET)
+	@CrossOrigin(origins="http://localhost:4200")
+	public String getPosts() {
+		System.out.println("Calling posts");
+		try {
+			return om.writeValueAsString(fpService.getCurrentPosts());
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@RequestMapping(value="/createpost", method=RequestMethod.POST)
+	@CrossOrigin(origins="http://localhost:4200")
+	public ForumPost submitForumPost(HttpSession session, @RequestBody ForumPost fp) {
+		System.out.println("submitting post");
+		fpService.submitPost(fp);
 		return fp;
 	}
 	

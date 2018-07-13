@@ -5,7 +5,7 @@ export class ForumPost {
     questionTitle: string;
     relevantLanguages: string;
     relevantTechnologies: string;
-    description: string;
+    questionAsked: string;
     likes: string;
     comments: string;
 }

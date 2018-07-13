@@ -13,15 +13,9 @@ import com.revaturesocialmedia.util.HibernateUtil;
 @Component
 public class EmployeeManager implements EmployeeDAO{
 	private HibernateUtil hu = HibernateUtil.getInstance();
-	private static EmployeeManager inst = null;
 	
 	private EmployeeManager() {
 		
-	}
-	
-	public static EmployeeManager getInst() {
-		if (inst == null) inst = new EmployeeManager();
-		return inst;
 	}
 	
 	@Override

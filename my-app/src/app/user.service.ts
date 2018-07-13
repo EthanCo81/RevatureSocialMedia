@@ -14,9 +14,9 @@ import { CurrentUser } from './current-user';
   providedIn: 'root'
 })
 export class UserService {
-  private static employee: Employee;
-  private static instructor: Instructor;
-  private static client: Client;
+  public static employee: Employee;
+  public static instructor: Instructor;
+  public static client: Client;
   private appUrl = 'http://localhost:8080/RevatureSocial/';
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
