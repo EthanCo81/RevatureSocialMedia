@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { SidenavbarComponent } from './sidenavbar/sidenavbar.component';
 import { TopsearchbarComponent } from './topsearchbar/topsearchbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ErrorComponent } from './error/error.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { ErrorComponent } from './error/error.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

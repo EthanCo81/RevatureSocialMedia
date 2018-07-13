@@ -23,5 +23,6 @@
 		<mapping class="com.revaturesocialmedia.beans.Instructor"/>
 		<mapping class="com.revaturesocialmedia.beans.Client"/>
 		<mapping class="com.revaturesocialmedia.beans.Answer"/>
+		<mapping class="com.revaturesocialmedia.beans.ForumPost"/>
 	</session-factory>
 </hibernate-configuration>

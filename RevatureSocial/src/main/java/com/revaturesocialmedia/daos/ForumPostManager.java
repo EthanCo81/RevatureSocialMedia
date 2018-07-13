@@ -1,9 +1,11 @@
 package com.revaturesocialmedia.daos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.revaturesocialmedia.beans.ForumPost;
@@ -62,8 +64,13 @@ public class ForumPostManager implements ForumPostDAO{
 
 	@Override
 	public List<ForumPost> getAllCriteria() {
-		// TODO Auto-generated method stub
-		return null;
+        Session s = hu.getSession();
+        String query = "from ForumPost f";
+        Query<ForumPost> q = s.createQuery(query, ForumPost.class);
+        List<ForumPost> fpl = new ArrayList<ForumPost>();
+        fpl = q.list();
+        s.close();
+        return fpl;
 	}
 
 	@Override
@@ -119,9 +126,7 @@ public class ForumPostManager implements ForumPostDAO{
 		Transaction tx = s.beginTransaction();
 		s.delete(fp);
 		tx.commit();
-		s.close();
-
-		
+		s.close();	
 	}
 
 }

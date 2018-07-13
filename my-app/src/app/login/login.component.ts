@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   logout(): void {
-    // this.userService.logout().subscribe();
+    this.userService.logout().subscribe();
     LoginComponent.loggedUser = null;
     this.username = null;
     this.password = null;

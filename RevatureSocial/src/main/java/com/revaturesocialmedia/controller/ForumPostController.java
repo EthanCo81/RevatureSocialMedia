@@ -1,12 +1,16 @@
 package com.revaturesocialmedia.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -18,47 +22,29 @@ import com.revaturesocialmedia.services.ForumPostService;
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
 public class ForumPostController {
-//	private ObjectMapper om = new ObjectMapper();
-//	@Autowired
-//	private LoginService login;
-//	
-//	
-//
-//	@RequestMapping(value="/login", method=RequestMethod.GET)
-//	public String goLogin(HttpSession session) throws JsonProcessingException {
-//		System.out.println("get: login");
-//		if(session.getAttribute("user") !=null) {
-//			return om.writeValueAsString(session.getAttribute("user"));
-//		}
-//		return "no user found";
-//	}
-//	
-//	@RequestMapping(value="/login", method=RequestMethod.POST)
-//	public String login(String username, String password, HttpSession session) throws JsonProcessingException{	
-//		
-//		System.out.println(username+" "+password);
-//		User u = login.login(username, password);
-//		System.out.println(username+" "+password+" "+ u);
-//		if(u != null) {
-//			session.setAttribute("user", u);
-//			return om.writeValueAsString(session.getAttribute("user"));
-//		}else {
-//			return null;
-//		}
-//		
-//	}
-//	
-//	
-//	
-//	
-//	public LoginService getLogin() {
-//		return login;
-//	}
-//
-//	public void setLogin(LoginService login) {
-//		this.login = login;
-//	}
+	private ObjectMapper om = new ObjectMapper();
+	@Autowired
+	private ForumPostService fpService;
 
 	
+	@RequestMapping(value="/posts", method = RequestMethod.GET)
+	@CrossOrigin(origins="http://localhost:4200")
+	public String getPosts() {
+		System.out.println("Calling posts");
+		try {
+			return om.writeValueAsString(fpService.getCurrentPosts());
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@RequestMapping(value="/createpost", method=RequestMethod.POST)
+	@CrossOrigin(origins="http://localhost:4200")
+	public ForumPost submitForumPost(HttpSession session, @RequestBody ForumPost fp) {
+		System.out.println("submitting post");
+		fpService.submitPost(fp);
+		return fp;
+	}
 	
 }

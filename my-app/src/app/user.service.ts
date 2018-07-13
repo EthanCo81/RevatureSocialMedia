@@ -14,20 +14,18 @@ import { CurrentUser } from './current-user';
   providedIn: 'root'
 })
 export class UserService {
-  private static employee: Employee;
-  private static instructor: Instructor;
-  private static client: Client;
+  public static employee: Employee;
+  public static instructor: Instructor;
+  public static client: Client;
   private appUrl = 'http://localhost:8080/RevatureSocial/';
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
 
   constructor(private http: HttpClient) {
-    
   }
 
   login(username: string, password: string): Observable<User> {
     if (username && password) {
-      // we need to log in
       console.log(username);
 
       const trial =  new User;
